@@ -7,8 +7,12 @@ author = "Ciencia de Datos • GECI"
 author-email = "ciencia.datos@islas.org.mx"
 classifiers = [ "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",]
 description-file = "README.md"
-home-page = "https://github.com/IslasGECI/dummy_transformations"
-module = "dummy_transformations"
+home-page = "https://github.com/IslasGECI/transects"
+module = "transects"
 requires = [
+	"bootstrapping_tools @ git+https://github.com/IslasGECI/bootstrapping_tools.git",
+	"geci_distance @ git+https://github.com/IslasGECI/geci_distance.git@v0.1.1",
+	"lmfit",
+	"pandas",
 ]
 requires-python=">=3.9"
