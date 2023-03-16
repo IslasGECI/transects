@@ -45,6 +45,5 @@ def test_calculate_population_estimate_by_season_and_transect():
 def test_write_estimations():
     output_path = "tests/data/rabbit_estimation.json"
     intervals = list(expected_2022_percentiles.values())
-    print(intervals)
     write_estimations(output_path, intervals)
     assert os.path.exists(output_path)
