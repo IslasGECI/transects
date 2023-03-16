@@ -16,6 +16,7 @@ expected_2022_percentiles = {
     "medium": 1520.9899638266606,
     "max": 2947.4381238658193,
 }
+season = 2022
 
 
 def test_calculate_rabbit_population_percentils():
@@ -29,7 +30,6 @@ def test_calculate_rabbit_population_percentils():
     assert obtained_percentiles[1] == expected_percentiles["medium"]
     assert obtained_percentiles[2] == expected_percentiles["max"]
 
-    season = 2022
     obtained_2022_percentiles = calculate_rabbit_population_percentils(transects_data, season)
     assert obtained_2022_percentiles[0] == expected_2022_percentiles["min"]
     assert obtained_2022_percentiles[1] == expected_2022_percentiles["medium"]
@@ -37,7 +37,6 @@ def test_calculate_rabbit_population_percentils():
 
 
 def test_calculate_population_estimate_by_season_and_transect():
-    season = 2022
     obtained = calculate_population_estimate_by_season_and_transect(transects_data, season)
     obtained_length = len(obtained)
     expected_length = 4
@@ -47,7 +46,7 @@ def test_calculate_population_estimate_by_season_and_transect():
 def test_write_estimations():
     output_path = "tests/data/rabbit_estimation.json"
     intervals = list(expected_2022_percentiles.values())
-    write_estimations(output_path, intervals)
+    write_estimations(output_path, intervals, season)
     assert os.path.exists(output_path)
 
     f = open(output_path, "r")
@@ -56,6 +55,7 @@ def test_write_estimations():
     assert json_content["minimo"] == "639"
     assert json_content["maximo"] == "1,426"
     assert json_content["media"] == "1,521"
+    assert json_content["season"] == 2022
 
 
 def test_get_confidence_interval():

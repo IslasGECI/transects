@@ -5,13 +5,14 @@ import numpy as np
 import json
 
 
-def write_estimations(output_path, intervals):
+def write_estimations(output_path, intervals, season):
     with open(output_path, "w") as exit_file:
         json.dump(
             {
                 "minimo": f"{np.around(intervals[1] - intervals[0]):,.0f}",
                 "media": f"{np.around(intervals[1]):,.0f}",
                 "maximo": f"{np.around(intervals[2] - intervals[1]):,.0f}",
+                "season": season,
             },
             exit_file,
         )
