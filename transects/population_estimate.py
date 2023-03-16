@@ -32,7 +32,7 @@ def get_confidence_interval(estimation_bootstrap):
     return [minimum_value, medium_value, maximum_value]
 
 
-def calculate_population_estimate_by_season_and_transect(transects_data, season=2021):
+def calculate_population_estimate_by_season_and_transect(transects_data, season):
     population_estimations = []
     transects_data = transects_data[transects_data["Temporada"] == season]
     for _, data in transects_data.groupby(by="Transecto"):

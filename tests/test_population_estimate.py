@@ -1,9 +1,11 @@
 from transects import (
     calculate_rabbit_population_percentils,
     calculate_population_estimate_by_season_and_transect,
+    get_confidence_interval,
     write_estimations,
 )
 
+import json
 import os
 import pandas as pd
 
@@ -47,3 +49,18 @@ def test_write_estimations():
     intervals = list(expected_2022_percentiles.values())
     write_estimations(output_path, intervals)
     assert os.path.exists(output_path)
+
+    f = open(output_path, "r")
+    json_content = json.loads(f.read())
+    print(json_content)
+    assert json_content["minimo"] == "639"
+    assert json_content["maximo"] == "1,426"
+    assert json_content["media"] == "1,521"
+
+
+def test_get_confidence_interval():
+    distribution = [x for x in range(1000)]
+    obtained_interval = get_confidence_interval(distribution)
+    assert obtained_interval[0] == 24.975
+    assert obtained_interval[1] == 499.5
+    assert obtained_interval[2] == 974.025
