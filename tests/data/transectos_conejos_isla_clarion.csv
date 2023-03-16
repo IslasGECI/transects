@@ -1,0 +1,18 @@
+Id,Temporada,Fecha,Hora_inicio,Hora_final,Isla,Especie,Fase,Transecto,Area_isla,Cantidad_individuos,Longitud,Distancia,Tipo_de_vegetacion,Porcentaje_nubosidad,Velocidad_viento,Temperatura,Humedad,Observaciones
+1,2018,NA,NA,NA,Clarión,Oryctolagus cuniculus,Conteo/Diagnostico,1,19.8,1,1000,23,EUF/WALT,NA,NA,NA,NA,NA
+2,2018,NA,NA,NA,Clarión,Oryctolagus cuniculus,Conteo/Diagnostico,1,19.8,1,1000,23,EUF/WALT,NA,NA,NA,NA,NA
+3,2018,NA,NA,NA,Clarión,Oryctolagus cuniculus,Conteo/Diagnostico,1,19.8,1,1000,23,EUF/WALT,NA,NA,NA,NA,NA
+8,2018,NA,NA,NA,Clarión,Oryctolagus cuniculus,Conteo/Diagnostico,1,19.8,1,1000,40,EUF/WALT,NA,NA,NA,NA,NA
+247,2018,NA,NA,NA,Clarión,Oryctolagus cuniculus,Conteo/Diagnostico,6,19.8,1,1000,16,TRB/ZAN,NA,NA,NA,NA,NA
+506,2021,14/Abr/2021,21:10:00,22:20:00,Clarión,Oryctolagus cuniculus,Conteo/Diagnostico,Conejos_05,19.8,1,1000,0.4,karwinskia_scrub/bursera_scrub,40,NA,NA,NA,Antes TRANCON 3
+507,2021,14/Abr/2021,21:10:00,22:20:00,Clarión,Oryctolagus cuniculus,Conteo/Diagnostico,Conejos_05,19.8,1,1000,12,karwinskia_scrub/bursera_scrub,40,NA,NA,NA,Antes TRANCON 3
+687,2021,24/Nov/2021,18:30:00,20:27:00,Clarión,Oryctolagus cuniculus,Conteo/Diagnostico,Conejos_01,19.8,1,1000,0.5,mixed_scrub/brickelia_scrub,NA,NA,NA,NA,NA
+688,2021,24/Nov/2021,18:30:00,20:27:00,Clarión,Oryctolagus cuniculus,Conteo/Diagnostico,Conejos_01,19.8,1,1000,2,mixed_scrub/brickelia_scrub,NA,NA,NA,NA,NA
+689,2022,13/Jun/2022,08:30:00,09:40:00,Clarión,Oryctolagus cuniculus,Conteo/Diagnostico,Conejos_01,19.8,1,1000,19,NA,NA,NA,NA,NA,NA
+693,2022,13/Jun/2022,08:30:00,09:40:00,Clarión,Oryctolagus cuniculus,Conteo/Diagnostico,Conejos_01,19.8,1,1000,3,NA,NA,NA,NA,NA,NA
+695,2022,29/Jun/2022,20:30:00,21:30:00,Clarión,Oryctolagus cuniculus,Conteo/Diagnostico,Conejos_02,19.8,1,1000,24,NA,90,NA,NA,NA,los conejos se observaron mezclados con las colonias de Bobos ramoneando la EUF sp.
+697,2022,29/Jun/2022,20:30:00,21:30:00,Clarión,Oryctolagus cuniculus,Conteo/Diagnostico,Conejos_02,19.8,1,1000,41,NA,90,NA,NA,NA,NA
+798,2022,16/Jun/2022,20:36:00,21:19:00,Clarión,Oryctolagus cuniculus,Conteo/Diagnostico,Conejos_06,19.8,2,1000,15,NA,NA,NA,NA,NA,NA
+1088,2022,21/Oct/2022,19:13:00,20:02:00,Clarión,Oryctolagus cuniculus,Conteo/Diagnostico,Conejos_14,19.8,2,1000,3,NA,20,4,25.3,73.3,NA
+1089,2022,21/Oct/2022,19:13:00,20:02:00,Clarión,Oryctolagus cuniculus,Conteo/Diagnostico,Conejos_14,19.8,2,1000,19,NA,NA,NA,NA,NA,NA
+1090,2022,21/Oct/2022,19:13:00,20:02:00,Clarión,Oryctolagus cuniculus,Conteo/Diagnostico,Conejos_14,19.8,1,1000,3,NA,10,5,25.5,80.5,NA
