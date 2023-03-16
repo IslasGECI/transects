@@ -18,7 +18,7 @@ expected_2022_percentiles = {
 }
 
 
-def test_write_rabbit_population_estimate():
+def test_calculate_rabbit_population_percentils():
     obtained_percentiles = calculate_rabbit_population_percentils(transects_data)
     expected_percentiles = {
         "min": 1128.6071615937835,
