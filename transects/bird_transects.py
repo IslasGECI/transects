@@ -8,14 +8,14 @@ def get_transect_area(transects_info):
         "MMAD": "",
     }
     transect_key = ["MMAA", "MMAB", "MMAD"]
+    area_differentials = {"MMAA": 60, "MMAB": (np.pi * (30) ** 2), "MMAD": 60}
     for key in transect_key:
-        areas[key] = calculate_transect_area(transects_info, key)
+        areas[key] = calculate_transect_area(transects_info, key, area_differentials)
     return areas
 
 
-def calculate_transect_area(transects_info, transect_key):
+def calculate_transect_area(transects_info, transect_key, area_differentials):
     transect_length = get_transect_length(transects_info, transect_key)
-    area_differentials = {"MMAA": 60, "MMAB": (np.pi * (30) ** 2), "MMAD": 60}
     if transect_key != "MMAB":
         return transect_length * area_differentials[transect_key]
     else:
