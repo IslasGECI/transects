@@ -17,3 +17,5 @@ def test_get_transect_area():
     assert obtained["MMAA"] == expected_area_MMAA
     expected_area_MMAD = 18000
     assert obtained["MMAD"] == expected_area_MMAD
+    expected_area_MMAB = 5654.866
+    assert obtained["MMAB"] == expected_area_MMAB
