@@ -10,4 +10,6 @@ def test_get_transect_area():
         "punto_transecto": ["T1", "1", "2", "NA", "T2"],
     }
     transect_df = pd.DataFrame(transect_dict)
-    get_transect_area(transect_df)
+    obtained = get_transect_area(transect_df)
+    expected_len = 3
+    assert len(obtained) == expected_len
