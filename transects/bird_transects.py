@@ -5,6 +5,6 @@ def get_transect_area(transects_info):
         "MMAD": "",
     }
     areas["MMAA"] = (
-        transects_info[transects_info.clave_muestreo == "MMAA"].longitud_transecto[0] * 60
+        transects_info[transects_info.clave_muestreo == "MMAA"].longitud_transecto.values * 60
     )
     return areas
