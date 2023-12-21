@@ -1,4 +1,5 @@
 import pandas as pd
+from pytest import approx
 
 from transects import get_transect_area
 
@@ -18,4 +19,4 @@ def test_get_transect_area():
     expected_area_MMAD = 18000
     assert obtained["MMAD"] == expected_area_MMAD
     expected_area_MMAB = 5654.866
-    assert obtained["MMAB"] == expected_area_MMAB
+    assert approx(obtained["MMAB"]) == expected_area_MMAB

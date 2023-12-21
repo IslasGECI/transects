@@ -7,15 +7,17 @@ def get_transect_area(transects_info):
         "MMAB": "",
         "MMAD": "",
     }
-    transect_key = ["MMAA", "MMAD"]
+    transect_key = ["MMAA", "MMAB", "MMAD"]
     for key in transect_key:
         areas[key] = calculate_transect_area(transects_info, key)
     return areas
 
 
 def calculate_transect_area(transects_info, transect_key):
-    area_differentials = {"MMAA": 60, "MMAB": np.pi * (30) ** 2, "MMAD": 60}
+    area_differentials = {"MMAA": 60, "MMAB": (np.pi * (30) ** 2) / 200, "MMAD": 60}
     return (
-        transects_info[transects_info.clave_muestreo == transect_key].longitud_transecto.values
+        transects_info[
+            transects_info.clave_muestreo == transect_key
+        ].longitud_transecto.values.sum()
         * area_differentials[transect_key]
     )
