@@ -4,10 +4,9 @@ def get_transect_area(transects_info):
         "MMAB": "",
         "MMAD": "",
     }
-    transect_key = "MMAA"
-    areas[transect_key] = calculate_transect_area(transects_info, transect_key)
-    transect_key = "MMAD"
-    areas[transect_key] = calculate_transect_area(transects_info, transect_key)
+    transect_key = ["MMAA", "MMAD"]
+    for key in transect_key:
+        areas[key] = calculate_transect_area(transects_info, key)
     return areas
 
 
