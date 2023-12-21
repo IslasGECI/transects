@@ -10,7 +10,7 @@ description-file = "README.md"
 home-page = "https://github.com/IslasGECI/transects"
 module = "transects"
 requires = [
-	"bootstrapping_tools @ git+https://github.com/IslasGECI/bootstrapping_tools.git",
+	"bootstrapping_tools==3.*",
 	"geci_distance @ git+https://github.com/IslasGECI/geci_distance.git@v0.1.1",
 	"lmfit",
 	"pandas",
