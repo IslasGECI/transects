@@ -25,4 +25,5 @@ def get_transect_length(transects_info, transect_mask):
 
 
 def count_by_specie_and_method(records_df):
-    return {"MMAA": {"specie 1": 3}}
+    print(records_df.groupby(["clave_muestreo", "Especie"])["n_individuos"].agg("sum").to_dict())
+    return {"MMAA": {"species 1": 3}}
