@@ -13,3 +13,5 @@ def test_get_transect_area():
     obtained = get_transect_area(transect_df)
     expected_len = 3
     assert len(obtained) == expected_len
+    expected_area_MMAA = 6000
+    assert obtained["MMAA"] == expected_area_MMAA
