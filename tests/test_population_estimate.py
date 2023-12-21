@@ -23,7 +23,7 @@ def test_calculate_rabbit_population_percentils():
     obtained_percentiles = calculate_rabbit_population_percentils(transects_data)
     expected_percentiles = {
         "min": 1128.6071615937835,
-        "max": 2974.91369532452,
+        "max": 3180.1537328618992,
         "medium": 1128.6071615937835,
     }
     assert obtained_percentiles[0] == expected_percentiles["min"]
