@@ -11,10 +11,11 @@ def get_transect_area(transects_info):
 
 def calculate_transect_area(transects_info, transect_key, area_differentials):
     transect_length = get_transect_length(transects_info, transect_key)
-    if transect_key != "MMAB":
+    number_points = len(transect_length)
+    are_transects = number_points == 1
+    if are_transects:
         return transect_length * area_differentials[transect_key]
     else:
-        number_points = len(transect_length)
         return number_points * area_differentials[transect_key]
 
 
