@@ -6,9 +6,8 @@ def get_transect_area(transects_info):
     }
     transect_key = "MMAA"
     areas[transect_key] = calculate_transect_area(transects_info, transect_key)
-    areas["MMAD"] = (
-        transects_info[transects_info.clave_muestreo == "MMAD"].longitud_transecto.values * 60
-    )
+    transect_key = "MMAD"
+    areas[transect_key] = calculate_transect_area(transects_info, transect_key)
     return areas
 
 
