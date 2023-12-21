@@ -22,3 +22,14 @@ def test_get_transect_area():
     assert obtained["MMAD"] == expected_area_MMAD
     expected_area_MMAB = 5654.866
     assert approx(obtained["MMAB"]) == expected_area_MMAB
+
+    transect_from_csv = pd.read_csv("tests/data/bird_transects.csv")
+    obtained = get_transect_area(transect_from_csv)
+    expected_len = 3
+    assert len(obtained) == expected_len
+    expected_area_MMAA = 1470 * 60
+    assert obtained["MMAA"] == expected_area_MMAA
+    expected_area_MMAD = 2000 * 60
+    assert obtained["MMAD"] == expected_area_MMAD
+    expected_area_MMAB = 2827.4333 * 10
+    assert approx(obtained["MMAB"]) == expected_area_MMAB
