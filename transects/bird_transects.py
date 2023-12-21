@@ -2,9 +2,9 @@ import numpy as np
 
 
 def get_transect_area(transects_info):
-    areas = {}
     transect_key = ["MMAA", "MMAB", "MMAD"]
     area_differentials = {"MMAA": 60, "MMAB": (np.pi * (30) ** 2), "MMAD": 60}
+    areas = {}
     for key in transect_key:
         areas[key] = calculate_transect_area(transects_info, key, area_differentials)
     return areas
