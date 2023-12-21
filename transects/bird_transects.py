@@ -12,6 +12,8 @@ def get_transect_area(transects_info):
 
 
 def calculate_transect_area(transects_info, transect_key):
+    transect_width = 60
     return (
-        transects_info[transects_info.clave_muestreo == transect_key].longitud_transecto.values * 60
+        transects_info[transects_info.clave_muestreo == transect_key].longitud_transecto.values
+        * transect_width
     )
