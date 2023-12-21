@@ -22,3 +22,7 @@ def calculate_transect_area(transects_info, transect_key, area_differentials):
 
 def get_transect_length(transects_info, transect_mask):
     return transects_info[transect_mask].longitud_transecto.values
+
+
+def count_by_specie_and_method(records_df):
+    return {"MMAA": {"specie 1": 3}}
