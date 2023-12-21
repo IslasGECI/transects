@@ -1,7 +1,7 @@
 import pandas as pd
 from pytest import approx
 
-from transects import count_by_specie_and_method, get_transect_area, get_transect_length
+from transects import count_by_specie_and_method, get_transect_area
 
 
 transect_dict = {
@@ -40,29 +40,29 @@ def tests_count_by_specie_and_method():
         "clave_muestreo": ["MMAA", "MMAA"],
         "punto_transecto": ["T1", "T1"],
         "Especie": [
-            "specie 1",
-            "specie 1",
+            "species 1",
+            "species 1",
         ],
         "n_individuos": [1, 2],
     }
     records_df = pd.DataFrame(records_dict)
     obtained = count_by_specie_and_method(records_df)
-    expected = {"MMAA": {"specie 1": 3}}
+    expected = {"MMAA": {"species 1": 3}}
     assert obtained == expected
 
     records_dict = {
         "clave_muestreo": ["MMAD", "MMAD", "MMAA", "MMAB", "MMAB"],
         "punto_transecto": ["T1", "T1", "T3", "2", "3"],
         "Especie": [
-            "specie 1",
-            "specie 1",
-            "specie 2",
-            "specie 3",
-            "specie 1",
+            "species 1",
+            "species 1",
+            "species 2",
+            "species 3",
+            "species 1",
         ],
         "n_individuos": [1, 2, 8, 4, 5],
     }
     records_df = pd.DataFrame(records_dict)
     obtained = count_by_specie_and_method(records_df)
-    expected = {"MMAA": {"specie 2": 8}}
+    expected = {"MMAA": {"species 2": 8}}
     assert obtained == expected
