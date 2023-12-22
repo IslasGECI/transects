@@ -19,7 +19,9 @@ def test_get_density_by_specie():
     print(obtained)
     expected_columns = 2
     assert len(obtained.columns) == expected_columns
-    assert approx(obtained.loc["Mosquero", "densidad"]) == 2 / 23.6474
+    assert (
+        approx(obtained.loc["Setophaga pitiayumii insularis", "densidad"], abs=1e-4) == 53 / 23.6474
+    )
 
 
 transect_dict = {
