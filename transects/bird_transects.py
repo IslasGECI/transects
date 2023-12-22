@@ -31,5 +31,7 @@ def count_by_specie_and_method(records_df):
 
 def count_total_individuals_by_species(grouped_data):
     df = pd.DataFrame({"n_individuos": []})
-    df.loc["species 1"] = grouped_data.xs("species 1", level="Especie").sum().values
+    df_indexes = grouped_data.index.get_level_values("Especie").unique()
+    for species in df_indexes:
+        df.loc[species] = grouped_data.xs(species, level="Especie").sum().values
     return df
