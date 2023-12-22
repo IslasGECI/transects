@@ -16,6 +16,8 @@ bird_records_path = "tests/data/bird_records.csv"
 
 def test_get_density_by_specie():
     obtained = get_density_by_specie(bird_records_path, transect_path)
+    expected_columns = 2
+    assert len(obtained.columns) == expected_columns
 
 
 transect_dict = {
