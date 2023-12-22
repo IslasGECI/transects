@@ -47,8 +47,8 @@ def tests_count_by_specie_and_method():
     }
     records_df = pd.DataFrame(records_dict)
     obtained = count_by_specie_and_method(records_df)
-    expected = {"MMAA": {"species 1": 3}}
-    assert obtained == expected
+    expected_MMAA_species = 3
+    assert obtained.loc["MMAA", "species 1"] == expected_MMAA_species
 
     records_dict = {
         "clave_muestreo": ["MMAD", "MMAD", "MMAA", "MMAB", "MMAB"],
@@ -64,5 +64,9 @@ def tests_count_by_specie_and_method():
     }
     records_df = pd.DataFrame(records_dict)
     obtained = count_by_specie_and_method(records_df)
-    expected = {"MMAA": {"species 2": 8}}
-    assert obtained == expected
+    expected_MMAA_species = 8
+    assert obtained.loc["MMAA", "species 2"] == expected_MMAA_species
+
+    records_df = pd.read_csv("tests/data/bird_records.csv")
+    obtained = count_by_specie_and_method(records_df)
+    obtained.to_csv("tests/data/bird_count.csv")
