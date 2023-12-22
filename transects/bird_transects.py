@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 
 
 def get_transect_area(transects_info):
@@ -29,4 +30,6 @@ def count_by_specie_and_method(records_df):
 
 
 def count_total_individuals_by_species(grouped_data):
-    pass
+    df = pd.DataFrame({"n_individuos": []})
+    df.loc["species 1"] = grouped_data.xs("species 1", level="Especie").sum().values
+    return df
