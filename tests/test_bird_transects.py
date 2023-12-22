@@ -78,10 +78,10 @@ def tests_count_by_specie_and_method():
 
 def test_count_species_by_method():
     grouped_data = pd.DataFrame(
-        {"n_individuos": [1, 2, 3]},
+        {"n_individuos": [1, 2, 3, 10]},
     )
     grouped_data.index = pd.MultiIndex.from_arrays(
-        [["MMAA", "MMAB", "MMAA"], ["species 2", "species 1", "species 1"]],
+        [["MMAA", "MMAB", "MMAA", "MMAH"], ["species 2", "species 1", "species 1", "species 2"]],
         names=["clave_muestreo", "Especie"],
     )
     print(grouped_data.index.get_level_values("Especie").unique())
