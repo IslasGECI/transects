@@ -5,6 +5,7 @@ from transects import (
     count_by_specie_and_method,
     get_transect_area,
     count_total_individuals_by_species,
+    get_total_area,
 )
 
 
@@ -37,6 +38,13 @@ def test_get_transect_area():
     assert obtained["MMAD"] == expected_area_MMAD
     expected_area_MMAB = 2827.4333 * 10
     assert approx(obtained["MMAB"]) == expected_area_MMAB
+
+
+def test_get_total_area():
+    transects_csv_path = "tests/data/bird_transects.csv"
+    expected = 1470 * 60 + 2000 * 60 + 2827.4333 * 10
+    obtained = get_total_area(transects_csv_path)
+    assert obtained == expected
 
 
 def tests_count_by_specie_and_method():
@@ -79,12 +87,6 @@ def tests_count_by_specie_and_method():
 
 
 def test_count_species_by_method():
-    index = pd.MultiIndex.from_arrays(
-        [["MMAA", "MMAB", "MMAA", "MMAH"], ["species 2", "species 1", "species 1", "species 2"]],
-        names=["clave_muestreo", "Especie"],
-    )
-    grouped_data = pd.Series([1, 2, 3, 10], index=index, name="n_individuos")
-
     records_dict = {
         "clave_muestreo": ["MMAA", "MMAB", "MMAB", "MMAA", "MMAA", "MMAH"],
         "punto_transecto": ["T1", "1", "2", "T1", "T1", "T3"],
