@@ -89,6 +89,8 @@ def test_count_species_by_method():
     expected_species_2 = 1
     assert obtained.loc["species 2"].values == expected_species_2
 
-    # records_df = pd.read_csv("tests/data/bird_records.csv")
-    # obtained = count_by_specie_and_method(records_df)
-    # print(count_total_individuals_by_species(obtained))
+    records_df = pd.read_csv("tests/data/bird_records.csv")
+    grouped_data = count_by_specie_and_method(records_df)
+    obtained = count_total_individuals_by_species(grouped_data)
+    expected_actitis_number = 13
+    assert obtained.loc["Actitis macularius"].values == expected_actitis_number
