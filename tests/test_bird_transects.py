@@ -84,8 +84,22 @@ def test_count_species_by_method():
         names=["clave_muestreo", "Especie"],
     )
     grouped_data = pd.Series([1, 2, 3, 10], index=index, name="n_individuos")
-    obtained = count_total_individuals_by_species(grouped_data)
-    print(obtained)
+
+    records_dict = {
+        "clave_muestreo": ["MMAA", "MMAB", "MMAB", "MMAA", "MMAA", "MMAH"],
+        "punto_transecto": ["T1", "1", "2", "T1", "T1", "T3"],
+        "Especie": [
+            "species 2",
+            "species 1",
+            "species 1",
+            "species 1",
+            "species 1",
+            "species 2",
+        ],
+        "n_individuos": [1, 1, 1, 2, 1, 10],
+    }
+    records_df = pd.DataFrame(records_dict)
+    obtained = count_total_individuals_by_species(records_df)
     expected_species_1 = 5
     assert obtained.loc["species 1"].values == expected_species_1
     expected_species_2 = 1
