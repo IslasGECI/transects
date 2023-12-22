@@ -81,8 +81,7 @@ def test_count_species_by_method():
         [["MMAA", "MMAB", "MMAA", "MMAH"], ["species 2", "species 1", "species 1", "species 2"]],
         names=["clave_muestreo", "Especie"],
     )
-    grouped_data = pd.Series({"n_individuos": [1, 2, 3, 10]}, index=index)
-    print(grouped_data.index.get_level_values("Especie").unique())
+    grouped_data = pd.Series([1, 2, 3, 10], index=index, name="n_individuos")
     obtained = count_total_individuals_by_species(grouped_data)
     print(obtained)
     expected_species_1 = 5
@@ -90,6 +89,6 @@ def test_count_species_by_method():
     expected_species_2 = 1
     assert obtained.loc["species 2"].values == expected_species_2
 
-    records_df = pd.read_csv("tests/data/bird_records.csv")
-    obtained = count_by_specie_and_method(records_df)
-    print(count_total_individuals_by_species(obtained))
+    # records_df = pd.read_csv("tests/data/bird_records.csv")
+    # obtained = count_by_specie_and_method(records_df)
+    # print(count_total_individuals_by_species(obtained))
