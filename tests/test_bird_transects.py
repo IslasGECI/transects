@@ -79,10 +79,10 @@ def tests_count_by_specie_and_method():
 def test_count_species_by_method():
     grouped_data = pd.DataFrame(
         {"n_individuos": [1, 2, 3]},
-        index=[
-            ["MMAB", "MMAB", "MMAA"],
-            ["species 1", "species 2", "species 1"],
-        ],
+    )
+    grouped_data.index = pd.MultiIndex.from_arrays(
+        [["MMAA", "MMAB", "MMAA"], ["species 1", "species 2", "species 1"]],
+        names=["clave_muestreo", "Especie"],
     )
     obtained = count_total_individuals_by_species(grouped_data)
     expected_species_1 = 4
