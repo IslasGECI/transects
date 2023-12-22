@@ -74,6 +74,8 @@ def tests_count_by_specie_and_method():
     records_df = pd.read_csv("tests/data/bird_records.csv")
     obtained = count_by_specie_and_method(records_df)
     obtained.to_csv("tests/data/bird_count.csv")
+    expected_actitis_number = 4
+    assert obtained.loc[("MMAA", "Actitis macularius")] == expected_actitis_number
 
 
 def test_count_species_by_method():
