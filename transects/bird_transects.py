@@ -4,10 +4,9 @@ import pandas as pd
 
 def get_density_by_specie(bird_records_path, transect_path):
     records = pd.read_csv(bird_records_path)
-    counts = count_total_individuals_by_species(records)
-    densities = counts.to_frame()
-    densities["densidad"] = 1
-    return densities
+    counts = count_total_individuals_by_species(records).to_frame()
+    counts["densidad"] = 1
+    return counts
 
 
 def get_total_area(transects_info_path):
