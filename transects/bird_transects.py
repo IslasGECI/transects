@@ -2,6 +2,15 @@ import numpy as np
 import pandas as pd
 
 
+def get_total_area(transects_info_path):
+    transects_info = pd.read_csv(transects_info_path)
+    areas = get_transect_area(transects_info)
+    total = 0.0
+    for value in areas.values():
+        total += value
+    return total
+
+
 def get_transect_area(transects_info):
     area_differentials = {"MMAA": 60, "MMAB": (np.pi * (30) ** 2), "MMAD": 60}
     areas = {}

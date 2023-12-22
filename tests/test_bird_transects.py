@@ -44,7 +44,7 @@ def test_get_total_area():
     transects_csv_path = "tests/data/bird_transects.csv"
     expected = 1470 * 60 + 2000 * 60 + 2827.4333 * 10
     obtained = get_total_area(transects_csv_path)
-    assert obtained == expected
+    assert approx(obtained) == expected
 
 
 def tests_count_by_specie_and_method():
