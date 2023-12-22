@@ -1,7 +1,11 @@
 import pandas as pd
 from pytest import approx
 
-from transects import count_by_specie_and_method, get_transect_area
+from transects import (
+    count_by_specie_and_method,
+    get_transect_area,
+    count_total_individuals_by_species,
+)
 
 
 transect_dict = {
@@ -70,3 +74,15 @@ def tests_count_by_specie_and_method():
     records_df = pd.read_csv("tests/data/bird_records.csv")
     obtained = count_by_specie_and_method(records_df)
     obtained.to_csv("tests/data/bird_count.csv")
+
+
+def test_count_species_by_method():
+    grouped_data = pd.DataFrame(
+        {"n_individuos": [1, 2, 3]},
+        index=[
+            ["MMAA", "MMAB", "MMAA"],
+            ["species 1", "species 2", "species 1"],
+        ],
+    )
+    print(grouped_data)
+    count_total_individuals_by_species(grouped_data)
