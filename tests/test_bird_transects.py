@@ -9,6 +9,14 @@ from transects import (
 )
 
 
+transect_path = "tests/data/bird_transects.csv"
+bird_records_path = "tests/data/bird_records.csv"
+
+
+def test_get_density_by_specie():
+    obtained = get_density_by_specie()
+
+
 transect_dict = {
     "clave_muestreo": ["MMAA", "MMAB", "MMAB", "MMAC", "MMAD"],
     "longitud_transecto": [100, 200, 200, 400, 300],
@@ -28,7 +36,7 @@ def test_get_transect_area():
     expected_area_MMAB = 5654.866
     assert approx(obtained["MMAB"]) == expected_area_MMAB
 
-    transect_from_csv = pd.read_csv("tests/data/bird_transects.csv")
+    transect_from_csv = pd.read_csv(transect_path)
     obtained = get_transect_area(transect_from_csv)
     expected_len = 3
     assert len(obtained) == expected_len
@@ -41,9 +49,8 @@ def test_get_transect_area():
 
 
 def test_get_total_area():
-    transects_csv_path = "tests/data/bird_transects.csv"
     expected = 23.647433388
-    obtained = get_total_area(transects_csv_path)
+    obtained = get_total_area(transect_path)
     assert approx(obtained) == expected
 
 
@@ -79,7 +86,7 @@ def tests_count_by_specie_and_method():
     expected_MMAA_species = 8
     assert obtained.loc["MMAA", "species 2"] == expected_MMAA_species
 
-    records_df = pd.read_csv("tests/data/bird_records.csv")
+    records_df = pd.read_csv(bird_records_path)
     obtained = count_by_specie_and_method(records_df)
     obtained.to_csv("tests/data/bird_count.csv")
     expected_actitis_number = 4
@@ -107,7 +114,7 @@ def test_count_species_by_method():
     expected_species_2 = 1
     assert obtained.loc["species 2"] == expected_species_2
 
-    records_df = pd.read_csv("tests/data/bird_records.csv")
+    records_df = pd.read_csv(bird_records_path)
     obtained = count_total_individuals_by_species(records_df)
     expected_actitis_number = 13
     assert obtained.loc["Actitis macularius"] == expected_actitis_number
