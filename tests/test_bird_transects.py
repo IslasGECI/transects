@@ -101,12 +101,11 @@ def test_count_species_by_method():
     records_df = pd.DataFrame(records_dict)
     obtained = count_total_individuals_by_species(records_df)
     expected_species_1 = 5
-    assert obtained.loc["species 1"].values == expected_species_1
+    assert obtained.loc["species 1"] == expected_species_1
     expected_species_2 = 1
-    assert obtained.loc["species 2"].values == expected_species_2
+    assert obtained.loc["species 2"] == expected_species_2
 
     records_df = pd.read_csv("tests/data/bird_records.csv")
-    grouped_data = count_by_specie_and_method(records_df)
-    obtained = count_total_individuals_by_species(grouped_data)
+    obtained = count_total_individuals_by_species(records_df)
     expected_actitis_number = 13
-    assert obtained.loc["Actitis macularius"].values == expected_actitis_number
+    assert obtained.loc["Actitis macularius"] == expected_actitis_number
