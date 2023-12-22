@@ -8,7 +8,7 @@ def get_total_area(transects_info_path):
     total = 0.0
     for value in areas.values():
         total += value
-    return total
+    return total / 10_000
 
 
 def get_transect_area(transects_info):
