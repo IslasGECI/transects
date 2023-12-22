@@ -42,7 +42,7 @@ def test_get_transect_area():
 
 def test_get_total_area():
     transects_csv_path = "tests/data/bird_transects.csv"
-    expected = 236474.33388 / 10000
+    expected = 23.647433388
     obtained = get_total_area(transects_csv_path)
     assert approx(obtained) == expected
 
