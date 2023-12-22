@@ -26,3 +26,7 @@ def get_transect_length(transects_info, transect_mask):
 
 def count_by_specie_and_method(records_df):
     return records_df.groupby(["clave_muestreo", "Especie"])["n_individuos"].agg("sum")
+
+
+def count_total_individuals_by_species(grouped_data):
+    pass
