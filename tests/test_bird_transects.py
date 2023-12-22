@@ -109,3 +109,4 @@ def test_count_species_by_method():
     obtained = count_total_individuals_by_species(records_df)
     expected_actitis_number = 13
     assert obtained.loc["Actitis macularius"] == expected_actitis_number
+    obtained.to_csv("total_bird_count.csv")
