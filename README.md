@@ -2,7 +2,7 @@
 # Transects
 [![codecov](https://codecov.io/gh/IslasGECI/population_trend/graph/badge.svg?token=wyxnwZypMA)](https://codecov.io/gh/IslasGECI/transects)
 ![example branch
-parameter](https://github.com/IslasGECI/transects/actions/workflows/actions.yml/badge.svg)
+parameter](https://github.com/IslasGECI/transects/actions/workflows/develop.yml/badge.svg)
 ![licencia](https://img.shields.io/github/license/IslasGECI/transects)
 ![languages](https://img.shields.io/github/languages/top/IslasGECI/transects)
 ![commits](https://img.shields.io/github/commit-activity/y/IslasGECI/transects)
