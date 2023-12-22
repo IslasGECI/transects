@@ -77,7 +77,7 @@ def tests_count_by_specie_and_method():
 
 
 def test_count_species_by_method():
-    grouped_data = pd.DataFrame(
+    grouped_data = pd.Series(
         {"n_individuos": [1, 2, 3, 10]},
     )
     grouped_data.index = pd.MultiIndex.from_arrays(
@@ -91,3 +91,7 @@ def test_count_species_by_method():
     assert obtained.loc["species 1"].values == expected_species_1
     expected_species_2 = 1
     assert obtained.loc["species 2"].values == expected_species_2
+
+    records_df = pd.read_csv("tests/data/bird_records.csv")
+    obtained = count_by_specie_and_method(records_df)
+    print(count_total_individuals_by_species(obtained))
