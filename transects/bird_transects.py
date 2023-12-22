@@ -30,6 +30,8 @@ def count_by_specie_and_method(records_df):
 
 
 def count_total_individuals_by_species(grouped_data):
+    claves = ["MMAA", "MMAB", "MMAD"]
+    grouped_data.query(f"clave_muestreo.isin({claves})", inplace=True)
     df = pd.DataFrame({"n_individuos": []})
     df_indexes = grouped_data.index.get_level_values("Especie").unique()
     for species in df_indexes:
