@@ -2,6 +2,10 @@ import numpy as np
 import pandas as pd
 
 
+def get_density_by_specie(bird_records_path, transect_path):
+    pass
+
+
 def get_total_area(transects_info_path):
     transects_info = pd.read_csv(transects_info_path)
     areas = get_transect_area(transects_info)
