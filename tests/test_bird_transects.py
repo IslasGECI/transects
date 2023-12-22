@@ -3,9 +3,10 @@ from pytest import approx
 
 from transects import (
     count_by_specie_and_method,
-    get_transect_area,
     count_total_individuals_by_species,
+    get_density_by_specie,
     get_total_area,
+    get_transect_area,
 )
 
 
@@ -14,7 +15,7 @@ bird_records_path = "tests/data/bird_records.csv"
 
 
 def test_get_density_by_specie():
-    obtained = get_density_by_specie()
+    obtained = get_density_by_specie(bird_records_path, transect_path)
 
 
 transect_dict = {
