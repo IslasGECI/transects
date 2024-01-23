@@ -21,6 +21,7 @@ def test_get_density_by_specie():
     assert (
         approx(obtained.loc["Setophaga pitiayumii insularis", "densidad"], abs=1e-4) == 53 / 23.6474
     )
+    obtained.to_csv("bird_densities.csv")
 
 
 transect_dict = {
