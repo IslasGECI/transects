@@ -18,4 +18,5 @@ def test_count_rodent_captures_by_site():
 def test_calculate_rodent_effort_by_site():
     obtained = calculate_rodent_effort_by_site(traps_status_data)
     expected_columns = ["Sitio", "effort"]
-    assert obtained.columns in expected_columns
+    are_columns = [column in expected_columns for column in obtained.columns]
+    assert all(are_columns)
