@@ -19,7 +19,6 @@ def test_write_bird_densities():
     result = runner.invoke(
         cli,
         [
-            "write-bird-densities",
             "--bird-transects",
             transect_path,
             "--bird-records",
@@ -28,5 +27,5 @@ def test_write_bird_densities():
             output_path,
         ],
     )
-
+    print(result)
     assert os.path.exists(output_path)
