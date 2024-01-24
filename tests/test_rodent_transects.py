@@ -20,3 +20,6 @@ def test_calculate_rodent_effort_by_site():
     expected_columns = ["Sitio", "effort"]
     are_columns = [column in expected_columns for column in obtained.columns]
     assert all(are_columns)
+    expected_number_of_rows = 4
+    obtained_number_of_rows = len(obtained)
+    assert obtained_number_of_rows == expected_number_of_rows
