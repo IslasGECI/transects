@@ -1,5 +1,6 @@
 from transects import (
     count_rodent_captures_by_site,
+    calculate_trapping_success,
     calculate_rodent_effort_by_site,
     join_rodent_captures_and_effort,
 )
@@ -31,6 +32,12 @@ def test_calculate_rodent_effort_by_site():
     assert obtained.loc["Laguna del Toro", "effort"] == expected_effort_laguna_del_toro
     expected_effort_laguna_del_toro = 44
     assert obtained.loc["Arroyo al Zacatal", "effort"] == expected_effort_laguna_del_toro
+
+
+def test_calculate_trapping_success():
+    obtained = calculate_trapping_success(traps_status_data)
+    expected_trapping_succes_column = "trapping_success"
+    assert expected_trapping_succes_column in obtained.columns
 
 
 def test_join_rodent_captures_and_effort():
