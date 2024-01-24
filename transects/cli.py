@@ -1,5 +1,7 @@
-from transects import get_density_by_specie
+from .rodent_transects import calculate_trapping_success
+from .bird_transects import get_density_by_specie
 
+import pandas as pd
 import typer
 from typing_extensions import Annotated
 
@@ -16,5 +18,9 @@ def write_bird_densities(
 
 
 @cli.command()
-def write_rodent_trapping_success():
-    pass
+def write_rodent_trapping_success(
+    rodent_trap_status: Annotated[str, typer.Option()],
+    output_path: Annotated[str, typer.Option()],
+):
+    trap_status = pd.read_csv(rodent_trap_status)
+    calculate_trapping_success(trap_status).to_csv(output_path)
