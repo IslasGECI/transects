@@ -14,5 +14,9 @@ requires = [
 	"geci_distance @ git+https://github.com/IslasGECI/geci_distance.git@v0.1.1",
 	"lmfit",
 	"pandas",
+	"typer[all]",
 ]
 requires-python=">=3.9"
+
+[tool.flit.scripts]
+transects = "transects.cli:cli"
