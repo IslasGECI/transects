@@ -23,6 +23,7 @@ def test_write_bird_densities():
     result = runner.invoke(
         cli,
         [
+            "write-bird-densities",
             "--bird-transects",
             transect_path,
             "--bird-records",
@@ -34,3 +35,8 @@ def test_write_bird_densities():
     assert result.exit_code == 0
     assert os.path.exists(output_path)
     os.remove(output_path)
+
+
+def test_write_rodent_trapping_success():
+    result = runner.invoke(cli, ["write-rodent-trapping-success", "--help"])
+    assert result.exit_code == 0
