@@ -1,4 +1,8 @@
-from transects import count_rodent_captures_by_site, calculate_rodent_effort_by_site
+from transects import (
+    count_rodent_captures_by_site,
+    calculate_rodent_effort_by_site,
+    join_rodent_captures_and_effort,
+)
 
 import pandas as pd
 
@@ -27,3 +31,10 @@ def test_calculate_rodent_effort_by_site():
     assert obtained.loc["Laguna del Toro", "effort"] == expected_effort_laguna_del_toro
     expected_effort_laguna_del_toro = 44
     assert obtained.loc["Arroyo al Zacatal", "effort"] == expected_effort_laguna_del_toro
+
+
+def test_join_rodent_captures_and_effort():
+    obtained = join_rodent_captures_and_effort(traps_status_data)
+    expected_columns = ["Sitio", "captures", "effort"]
+    are_columns = [column in expected_columns for column in obtained.columns]
+    assert all(are_columns)
