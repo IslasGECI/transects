@@ -39,7 +39,7 @@ def test_calculate_trapping_success():
     expected_trapping_succes_column = "trapping_success"
     assert expected_trapping_succes_column in obtained.columns
     obtained_ts = obtained.loc["Laguna del Toro", "trapping_success"]
-    expected_ts = 1 / 45
+    expected_ts = 1 / 45 * 100
     assert obtained_ts == expected_ts
 
 
