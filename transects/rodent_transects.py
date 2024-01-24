@@ -14,5 +14,5 @@ def identify_captures(traps_status_data):
 
 
 def calculate_rodent_effort_by_site(traps_status_data):
-    traps_status_data["effort"] = 0
+    traps_status_data["effort"] = 1
     return traps_status_data.groupby(by=["Sitio"])[["effort"]].sum()
