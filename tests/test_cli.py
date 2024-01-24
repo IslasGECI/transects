@@ -40,3 +40,23 @@ def test_write_bird_densities():
 def test_write_rodent_trapping_success():
     result = runner.invoke(cli, ["write-rodent-trapping-success", "--help"])
     assert result.exit_code == 0
+
+    output_path = "tests/rodent_trapping_success.csv"
+
+    if os.path.exists(output_path):
+        os.remove(output_path)
+
+    traps_status_data_path = "tests/data/rodent_captures.csv"
+    result = runner.invoke(
+        cli,
+        [
+            "write-rodent-trapping-success",
+            "--rodent-trap-status",
+            traps_status_data_path,
+            "--output-path",
+            output_path,
+        ],
+    )
+    assert result.exit_code == 0
+    assert os.path.exists(output_path)
+    os.remove(output_path)
