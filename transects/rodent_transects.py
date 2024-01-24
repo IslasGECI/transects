@@ -12,7 +12,6 @@ def count_rodent_captures_by_site(traps_status_data):
 
 
 def identify_captures(traps_status_data):
-    traps_status_data["captures"] = 0
     is_capture = traps_status_data["status_trampa"] == "Captura"
     traps_status_data.loc[is_capture, "captures"] = 1
 
