@@ -13,3 +13,8 @@ def write_bird_densities(
     output_path: Annotated[str, typer.Option()],
 ):
     get_density_by_specie(bird_records, bird_transects).to_csv(output_path)
+
+
+@cli.command()
+def write_rodent_trapping_success():
+    pass
