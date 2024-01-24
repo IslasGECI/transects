@@ -17,3 +17,9 @@ def calculate_rodent_effort_by_site(traps_status_data):
     traps_status_data.dropna(subset=["status_trampa"], inplace=True)
     traps_status_data["effort"] = 1
     return traps_status_data.groupby(by=["Sitio"])[["effort"]].sum()
+
+
+def join_rodent_captures_and_effort(traps_status_data):
+    captures = count_rodent_captures_by_site(traps_status_data)
+    effort = calculate_rodent_effort_by_site(traps_status_data)
+    return captures.join(effort)
