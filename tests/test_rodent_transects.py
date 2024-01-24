@@ -19,6 +19,10 @@ def test_count_rodent_captures_by_site():
     expected_captures = 1
     assert obtained_captures == expected_captures
 
+    obtained_captures = obtained.loc["Arroyo al Zacatal", "captures"]
+    expected_captures = 0
+    assert obtained_captures == expected_captures
+
 
 def test_calculate_rodent_effort_by_site():
     obtained = calculate_rodent_effort_by_site(traps_status_data)
