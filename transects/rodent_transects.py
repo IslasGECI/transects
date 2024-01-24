@@ -1,6 +1,3 @@
-import pandas as pd
-
-
 def calculate_trapping_success(traps_status_data):
     joined_capture_and_effort = join_rodent_captures_and_effort(traps_status_data)
     joined_capture_and_effort["trapping_success"] = (
