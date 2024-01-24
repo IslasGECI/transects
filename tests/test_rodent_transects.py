@@ -25,3 +25,5 @@ def test_calculate_rodent_effort_by_site():
     assert obtained_number_of_rows == expected_number_of_rows
     expected_effort_laguna_del_toro = 45
     assert obtained.loc["Laguna del Toro", "effort"] == expected_effort_laguna_del_toro
+    expected_effort_laguna_del_toro = 44
+    assert obtained.loc["Arroyo al Zacatal", "effort"] == expected_effort_laguna_del_toro
