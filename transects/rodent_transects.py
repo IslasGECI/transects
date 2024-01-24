@@ -1,6 +1,14 @@
 import pandas as pd
 
 
+def calculate_trapping_success(traps_status_data):
+    joined_capture_and_effort = join_rodent_captures_and_effort(traps_status_data)
+    joined_capture_and_effort["trapping_success"] = (
+        joined_capture_and_effort["captures"] / joined_capture_and_effort["effort"]
+    ) * 100
+    return joined_capture_and_effort
+
+
 def count_rodent_captures_by_site(traps_status_data):
     identify_captures(traps_status_data)
     return traps_status_data.groupby(by=["Sitio"])[["captures"]].sum()
