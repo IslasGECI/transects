@@ -21,7 +21,6 @@ def test_get_density_by_specie():
     assert (
         approx(obtained.loc["Setophaga pitiayumii insularis", "densidad"], abs=1e-4) == 53 / 23.6474
     )
-    obtained.to_csv("bird_densities.csv")
 
 
 transect_dict = {
@@ -95,7 +94,6 @@ def tests_count_by_specie_and_method():
 
     records_df = pd.read_csv(bird_records_path)
     obtained = count_by_specie_and_method(records_df)
-    obtained.to_csv("tests/data/bird_count.csv")
     expected_actitis_number = 4
     assert obtained.loc[("MMAA", "Actitis macularius")] == expected_actitis_number
 

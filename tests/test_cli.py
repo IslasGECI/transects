@@ -16,6 +16,10 @@ def test_write_bird_densities():
     assert result.exit_code == 0
 
     output_path = "tests/bird_densities.csv"
+
+    if os.path.exists(output_path):
+        os.remove(output_path)
+
     result = runner.invoke(
         cli,
         [
@@ -27,5 +31,6 @@ def test_write_bird_densities():
             output_path,
         ],
     )
-    print(result)
+    assert result.exit_code == 0
     assert os.path.exists(output_path)
+    os.remove(output_path)
