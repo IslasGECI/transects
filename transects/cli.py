@@ -9,6 +9,11 @@ cli = typer.Typer()
 
 
 @cli.command()
+def write_resident_bird_records():
+    pass
+
+
+@cli.command()
 def write_bird_densities(
     bird_transects: Annotated[str, typer.Option()],
     bird_records: Annotated[str, typer.Option()],
