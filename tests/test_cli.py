@@ -65,3 +65,25 @@ def test_write_rodent_trapping_success():
 def test_write_resident_bird_records():
     result = runner.invoke(cli, ["write-resident-bird-records", "--help"])
     assert result.exit_code == 0
+
+    output_path = "tests/resident_records.csv"
+    observed_path = "tests/data/observed_bird_species.csv"
+
+    if os.path.exists(output_path):
+        os.remove(output_path)
+
+    result = runner.invoke(
+        cli,
+        [
+            "write-resident-bird-records",
+            "--observed-birds",
+            observed_path,
+            "--bird-records",
+            bird_records_path,
+            "--output-path",
+            output_path,
+        ],
+    )
+    assert result.exit_code == 0
+    assert os.path.exists(output_path)
+    os.remove(output_path)
