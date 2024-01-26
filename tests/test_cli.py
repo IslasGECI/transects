@@ -86,4 +86,3 @@ def test_write_resident_bird_records():
     )
     assert result.exit_code == 0
     assert os.path.exists(output_path)
-    os.remove(output_path)

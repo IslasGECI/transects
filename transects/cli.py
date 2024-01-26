@@ -1,5 +1,6 @@
 from .rodent_transects import calculate_trapping_success
 from .bird_transects import get_density_by_specie
+from .filter_resident_birds import filter_resident_birds, filter_resident_records
 
 import pandas as pd
 import typer
@@ -9,8 +10,15 @@ cli = typer.Typer()
 
 
 @cli.command()
-def write_resident_bird_records():
-    pass
+def write_resident_bird_records(
+    observed_birds: Annotated[str, typer.Option()],
+    bird_records: Annotated[str, typer.Option()],
+    output_path: Annotated[str, typer.Option()],
+):
+    observed_birds_df = pd.read_csv(observed_birds)
+    bird_records_df = pd.read_csv(bird_records)
+    resident_birds_df = filter_resident_birds(observed_birds_df)
+    filter_resident_records(resident_birds_df, bird_records_df).to_csv(output_path)
 
 
 @cli.command()
