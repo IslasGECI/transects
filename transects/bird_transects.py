@@ -1,5 +1,4 @@
 import numpy as np
-import pandas as pd
 
 
 def get_density_by_specie(bird_records_df, transects_info_df):
