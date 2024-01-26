@@ -60,3 +60,8 @@ def test_write_rodent_trapping_success():
     assert result.exit_code == 0
     assert os.path.exists(output_path)
     os.remove(output_path)
+
+
+def test_write_resident_bird_records():
+    result = runner.invoke(cli, ["write-resident-bird-records", "--help"])
+    assert result.exit_code == 0
