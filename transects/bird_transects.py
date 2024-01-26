@@ -11,8 +11,7 @@ def get_density_by_specie(bird_records_df, transect_path):
 
 
 def get_total_area(transects_info_df):
-    transects_info = transects_info_df
-    areas = get_transect_area(transects_info)
+    areas = get_transect_area(transects_info_df)
     total = 0.0
     for value in areas.values():
         total += value
