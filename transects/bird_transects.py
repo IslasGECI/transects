@@ -4,14 +4,15 @@ import pandas as pd
 
 def get_density_by_specie(bird_records_df, transect_path):
     records = bird_records_df
+    transects_info_df = pd.read_csv(transect_path)
     counts = count_total_individuals_by_species(records).to_frame()
-    total_area = get_total_area(transect_path)
+    total_area = get_total_area(transects_info_df)
     counts["densidad"] = counts.n_individuos / total_area
     return counts
 
 
-def get_total_area(transects_info_path):
-    transects_info = pd.read_csv(transects_info_path)
+def get_total_area(transects_info_df):
+    transects_info = transects_info_df
     areas = get_transect_area(transects_info)
     total = 0.0
     for value in areas.values():

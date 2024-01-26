@@ -57,7 +57,8 @@ def test_get_transect_area():
 
 def test_get_total_area():
     expected = 23.647433388
-    obtained = get_total_area(transect_path)
+    transects_info_df = pd.read_csv(transect_path)
+    obtained = get_total_area(transects_info_df)
     assert approx(obtained) == expected
 
 
