@@ -14,7 +14,8 @@ def write_bird_densities(
     bird_records: Annotated[str, typer.Option()],
     output_path: Annotated[str, typer.Option()],
 ):
-    get_density_by_specie(bird_records, bird_transects).to_csv(output_path)
+    bird_records_df = pd.read_csv(bird_records)
+    get_density_by_specie(bird_records_df, bird_transects).to_csv(output_path)
 
 
 @cli.command()

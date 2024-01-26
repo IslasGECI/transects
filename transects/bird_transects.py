@@ -2,8 +2,8 @@ import numpy as np
 import pandas as pd
 
 
-def get_density_by_specie(bird_records_path, transect_path):
-    records = pd.read_csv(bird_records_path)
+def get_density_by_specie(bird_records_df, transect_path):
+    records = bird_records_df
     counts = count_total_individuals_by_species(records).to_frame()
     total_area = get_total_area(transect_path)
     counts["densidad"] = counts.n_individuos / total_area
