@@ -28,6 +28,10 @@ def test_filter_resident_records():
             "n_individuos": [5, 3, 8, 2, 2],
         }
     )
+    resident_birds_df = pd.Series({"Especie": ["Columbina passerina"]})
+    obtained = filter_resident_records(resident_birds_df, records_list_df)
+    expected_rows = 1
+    assert len(obtained) == expected_rows
     resident_birds_df = pd.Series({"Especie": ["Anas discors"]})
     obtained = filter_resident_records(resident_birds_df, records_list_df)
     expected_rows = 2
