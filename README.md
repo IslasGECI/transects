@@ -1,6 +1,6 @@
 <a href="https://www.islas.org.mx/"><img src="https://www.islas.org.mx/img/logo.svg" align="right" width="256" /></a>
 # Transects
-[![codecov](https://codecov.io/gh/IslasGECI/population_trend/graph/badge.svg?token=wyxnwZypMA)](https://codecov.io/gh/IslasGECI/transects)
+[![codecov](https://codecov.io/gh/IslasGECI/transects/graph/badge.svg?token=wyxnwZypMA)](https://codecov.io/gh/IslasGECI/transects)
 ![example branch
 parameter](https://github.com/IslasGECI/transects/actions/workflows/develop.yml/badge.svg)
 ![licencia](https://img.shields.io/github/license/IslasGECI/transects)
