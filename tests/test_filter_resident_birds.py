@@ -11,5 +11,6 @@ def test_filter_resident_birds():
         }
     )
     obtained = filter_resident_birds(observed_list_df)
+    print(obtained)
     expected_residents = "Anas discors"
-    assert obtained == expected_residents
+    assert obtained.values[0] == expected_residents
