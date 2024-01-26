@@ -14,7 +14,7 @@ all: check coverage mutants
 		tests
 
 module = transects
-codecov_token = 6c56bccb-1758-4ed9-8161-97c845591c26
+codecov_token = 935e700b-e9dd-4272-825c-a2460b5dee6b
 
 define lint
 	pylint \
