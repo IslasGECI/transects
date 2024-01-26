@@ -16,7 +16,8 @@ bird_records_path = "tests/data/bird_records.csv"
 
 def test_get_density_by_specie():
     bird_records_df = pd.read_csv(bird_records_path)
-    obtained = get_density_by_specie(bird_records_df, transect_path)
+    transect_df = pd.read_csv(transect_path)
+    obtained = get_density_by_specie(bird_records_df, transect_df)
     expected_columns = 2
     assert len(obtained.columns) == expected_columns
     assert (
