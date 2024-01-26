@@ -3,4 +3,5 @@ def filter_resident_birds(observed_list_df):
 
 
 def filter_resident_records(residents_birds_df, records_list_df):
-    return [1, 2]
+    a = records_list_df.set_index("Especie")
+    return a.loc[residents_birds_df]
