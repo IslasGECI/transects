@@ -41,6 +41,8 @@ def get_transect_length(transects_info, transect_mask):
 
 
 def count_by_specie_and_method(records_df):
+    claves = ["MMAA", "MMAB", "MMAD"]
+    records_df.query(f"clave_muestreo.isin({claves})", inplace=True)
     return records_df.groupby(["clave_muestreo", "Especie"])["n_individuos"].agg("sum")
 
 
