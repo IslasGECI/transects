@@ -50,4 +50,5 @@ def count_total_individuals_by_species(records_df):
 
 
 def join_bird_counts_and_transect_areas(bird_counts_by_transect_and_species, transect_areas):
-    pass
+    bird_counts_by_transect_and_species["area"] = 1
+    return bird_counts_by_transect_and_species
