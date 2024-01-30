@@ -46,21 +46,21 @@ def test_get_transect_area():
     obtained = get_transect_area(transect_df_from_dict)
     expected_len = 3
     assert len(obtained) == expected_len
-    expected_area_MMAA = 6000
+    expected_area_MMAA = 0.6
     assert obtained["MMAA"] == expected_area_MMAA
-    expected_area_MMAD = 18000
+    expected_area_MMAD = 1.8
     assert obtained["MMAD"] == expected_area_MMAD
-    expected_area_MMAB = 5654.866
+    expected_area_MMAB = 0.5654866
     assert approx(obtained["MMAB"]) == expected_area_MMAB
 
     obtained = get_transect_area(transect_df)
     expected_len = 3
     assert len(obtained) == expected_len
-    expected_area_MMAA = 1470 * 60
+    expected_area_MMAA = (1470 * 60) / 10_000
     assert obtained["MMAA"] == expected_area_MMAA
-    expected_area_MMAD = 2000 * 60
+    expected_area_MMAD = (2000 * 60) / 10_000
     assert obtained["MMAD"] == expected_area_MMAD
-    expected_area_MMAB = 2827.4333 * 10
+    expected_area_MMAB = (2827.4333 * 10) / 10_000
     assert approx(obtained["MMAB"]) == expected_area_MMAB
 
 
