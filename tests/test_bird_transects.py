@@ -14,10 +14,18 @@ from transects import (
 transect_path = "tests/data/bird_transects.csv"
 bird_records_path = "tests/data/bird_records.csv"
 
+bird_records_df = pd.read_csv(bird_records_path)
+transect_df = pd.read_csv(transect_path)
+
+
+def test_get_density_by_species_and_transects():
+    obtained = get_density_by_species_and_transects(bird_records_df, transect_df)
+    obtained_columns = obtained.columns.values
+    expected_columns = ["n_individuos", "area", "density"]
+    assert (obtained_columns == expected_columns).all()
+
 
 def test_get_density_by_specie():
-    bird_records_df = pd.read_csv(bird_records_path)
-    transect_df = pd.read_csv(transect_path)
     obtained = get_density_by_specie(bird_records_df, transect_df)
     expected_columns = 2
     assert len(obtained.columns) == expected_columns
