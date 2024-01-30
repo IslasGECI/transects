@@ -22,6 +22,11 @@ def write_resident_bird_records(
 
 
 @cli.command()
+def write_bird_transect_densities():
+    pass
+
+
+@cli.command()
 def write_bird_densities(
     bird_transects: Annotated[str, typer.Option()],
     bird_records: Annotated[str, typer.Option()],
