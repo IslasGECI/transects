@@ -149,4 +149,4 @@ def tests_join_bird_counts_and_transect_areas():
     assert (obtained.columns.values == expected_column_names).all()
     expected_areas = [0.5, 1, 1, 2]
     obtained_areas = obtained.area.values
-    assert obtained_areas == expected_areas
+    assert (obtained_areas == expected_areas).all()
