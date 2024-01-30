@@ -47,3 +47,7 @@ def count_total_individuals_by_species(records_df):
     claves = ["MMAA", "MMAB", "MMAD"]
     records_df.query(f"clave_muestreo.isin({claves})", inplace=True)
     return records_df.groupby(["Especie"])["n_individuos"].agg("sum")
+
+
+def join_bird_counts_and_transect_areas(bird_counts_by_transect_and_species, transect_areas):
+    pass
