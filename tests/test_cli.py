@@ -15,6 +15,27 @@ def test_write_bird_transect_densities():
     result = runner.invoke(cli, ["write-bird-transect-densities", "--help"])
     assert result.exit_code == 0
 
+    output_path = "tests/bird_transect_densities.csv"
+
+    if os.path.exists(output_path):
+        os.remove(output_path)
+
+    result = runner.invoke(
+        cli,
+        [
+            "write-bird-transect-densities",
+            "--bird-transects",
+            transect_path,
+            "--bird-records",
+            bird_records_path,
+            "--output-path",
+            output_path,
+        ],
+    )
+    assert result.exit_code == 0
+    assert os.path.exists(output_path)
+    # os.remove(output_path)
+
 
 def test_write_bird_densities():
     result = runner.invoke(cli, ["write-bird-densities", "--help"])
