@@ -24,7 +24,7 @@ def test_get_density_by_species_and_transects():
     obtained_columns = obtained.columns.values
     expected_columns = ["n_individuos", "area", "density"]
     assert (obtained_columns == expected_columns).all()
-    assert obtained.loc["MMAA", "Trogon elegans"].density == approx(2 / 8.82, abs=1e-4)
+    assert obtained.loc["MMAA", "Trogon elegans"].density == approx(2 / 8.82, abs=1e-6)
 
 
 def test_get_density_by_specie():
