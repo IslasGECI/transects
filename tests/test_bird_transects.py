@@ -67,7 +67,6 @@ def test_get_transect_area():
 
 def test_get_total_area():
     expected = 23.647433388
-    transects_info_df = pd.read_csv(transect_path)
     obtained = get_total_area(transect_df)
     assert approx(obtained) == expected
 
@@ -83,8 +82,8 @@ def tests_count_by_specie_and_method():
         ],
         "n_individuos": [1, 2, 10],
     }
-    records_df = pd.DataFrame(records_dict)
-    obtained = count_by_specie_and_method(records_df)
+    records_df_from_dict = pd.DataFrame(records_dict)
+    obtained = count_by_specie_and_method(records_df_from_dict)
     expected_rows = 1
     assert len(obtained) == expected_rows
     expected_MMAA_species = 3
@@ -102,13 +101,12 @@ def tests_count_by_specie_and_method():
         ],
         "n_individuos": [1, 2, 8, 4, 5],
     }
-    records_df = pd.DataFrame(records_dict)
-    obtained = count_by_specie_and_method(records_df)
+    records_df_from_dict = pd.DataFrame(records_dict)
+    obtained = count_by_specie_and_method(records_df_from_dict)
     expected_MMAA_species = 8
     assert obtained.loc["MMAA", "species 2"] == expected_MMAA_species
 
-    records_df = pd.read_csv(bird_records_path)
-    obtained = count_by_specie_and_method(records_df)
+    obtained = count_by_specie_and_method(bird_records_df)
     expected_actitis_number = 4
     assert obtained.loc[("MMAA", "Actitis macularius")] == expected_actitis_number
 
@@ -127,15 +125,14 @@ def test_count_species_by_method():
         ],
         "n_individuos": [1, 1, 1, 2, 1, 10],
     }
-    records_df = pd.DataFrame(records_dict)
-    obtained = count_total_individuals_by_species(records_df)
+    records_df_from_dict = pd.DataFrame(records_dict)
+    obtained = count_total_individuals_by_species(records_df_from_dict)
     expected_species_1 = 5
     assert obtained.loc["species 1"] == expected_species_1
     expected_species_2 = 1
     assert obtained.loc["species 2"] == expected_species_2
 
-    records_df = pd.read_csv(bird_records_path)
-    obtained = count_total_individuals_by_species(records_df)
+    obtained = count_total_individuals_by_species(bird_records_df)
     expected_actitis_number = 13
     assert obtained.loc["Actitis macularius"] == expected_actitis_number
 

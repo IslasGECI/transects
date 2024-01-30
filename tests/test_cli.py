@@ -34,7 +34,7 @@ def test_write_bird_transect_densities():
     )
     assert result.exit_code == 0
     assert os.path.exists(output_path)
-    # os.remove(output_path)
+    os.remove(output_path)
 
 
 def test_write_bird_densities():
