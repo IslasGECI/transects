@@ -30,12 +30,10 @@ def get_total_area(transects_info_df):
 def get_transect_area(transects_info):
     area_differentials = {"MMAA": 60, "MMAB": (np.pi * (30) ** 2), "MMAD": 60}
     areas = {}
-    square_meters_to_hectares_factor = 10_000
+    square_meters_to_hectares = 10_000
     for key in area_differentials.keys():
-        areas[key] = (
-            calculate_transect_area(transects_info, key, area_differentials)
-            / square_meters_to_hectares_factor
-        )
+        transect_area = calculate_transect_area(transects_info, key, area_differentials)
+        areas[key] = transect_area / square_meters_to_hectares
     return areas
 
 
