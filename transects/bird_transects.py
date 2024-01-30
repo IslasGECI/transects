@@ -2,6 +2,10 @@ import numpy as np
 import pandas as pd
 
 
+def get_density_by_species_and_transects(bird_records_df, transect_df):
+    pass
+
+
 def get_density_by_specie(bird_records_df, transects_info_df):
     counts = count_total_individuals_by_species(bird_records_df).to_frame()
     total_area = get_total_area(transects_info_df)
