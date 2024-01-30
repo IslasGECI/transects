@@ -66,16 +66,19 @@ def test_get_total_area():
 
 def tests_count_by_specie_and_method():
     records_dict = {
-        "clave_muestreo": ["MMAA", "MMAA"],
-        "punto_transecto": ["T1", "T1"],
+        "clave_muestreo": ["MMAA", "MMAA", "MMZZ"],
+        "punto_transecto": ["T1", "T1", "TZ"],
         "Especie": [
             "species 1",
             "species 1",
+            "species 5",
         ],
-        "n_individuos": [1, 2],
+        "n_individuos": [1, 2, 10],
     }
     records_df = pd.DataFrame(records_dict)
     obtained = count_by_specie_and_method(records_df)
+    expected_rows = 1
+    assert len(obtained) == expected_rows
     expected_MMAA_species = 3
     assert obtained.loc["MMAA", "species 1"] == expected_MMAA_species
 
