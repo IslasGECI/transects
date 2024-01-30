@@ -3,7 +3,13 @@ import pandas as pd
 
 
 def get_density_by_species_and_transects(bird_records_df, transect_df):
-    pass
+    bird_counts_by_transect_and_species = count_by_specie_and_method(bird_records_df).to_frame()
+    transect_areas = get_transect_area(transect_df)
+    joined = join_bird_counts_and_transect_areas(
+        bird_counts_by_transect_and_species, transect_areas
+    )
+    joined["density"] = joined["n_individuos"] / joined["area"]
+    return joined
 
 
 def get_density_by_specie(bird_records_df, transects_info_df):
@@ -34,7 +40,7 @@ def calculate_transect_area(transects_info, transect_key, area_differentials):
     transect_length = get_transect_length(transects_info, transect_mask)
     are_transects = transects_info[transect_mask].punto_transecto.str.contains("T").all()
     if are_transects:
-        return transect_length * area_differentials[transect_key]
+        return transect_length[0] * area_differentials[transect_key]
     else:
         number_points = len(transect_length)
         return number_points * area_differentials[transect_key]

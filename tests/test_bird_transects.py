@@ -21,6 +21,7 @@ transect_df = pd.read_csv(transect_path)
 
 def test_get_density_by_species_and_transects():
     obtained = get_density_by_species_and_transects(bird_records_df, transect_df)
+    print(obtained)
     obtained_columns = obtained.columns.values
     expected_columns = ["n_individuos", "area", "density"]
     assert (obtained_columns == expected_columns).all()
