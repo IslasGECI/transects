@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 
 
 def get_density_by_specie(bird_records_df, transects_info_df):
@@ -50,5 +51,6 @@ def count_total_individuals_by_species(records_df):
 
 
 def join_bird_counts_and_transect_areas(bird_counts_by_transect_and_species, transect_areas):
-    bird_counts_by_transect_and_species["area"] = 1
-    return bird_counts_by_transect_and_species
+    transect_areas_df = pd.DataFrame.from_dict(transect_areas, orient="index", columns=["area"])
+    joined = bird_counts_by_transect_and_species.join(transect_areas_df, on="clave_muestreo")
+    return joined

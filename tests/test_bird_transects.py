@@ -131,14 +131,9 @@ def test_count_species_by_method():
 
 def tests_join_bird_counts_and_transect_areas():
     records_dict = {
-        "clave_muestreo": ["MMAA", "MMAB", "MMAB", "MMAD"],
-        "Especie": [
-            "species 2",
-            "species 1",
-            "species 2",
-            "species 1",
-        ],
-        "n_individuos": [1, 1, 1, 2],
+        "clave_muestreo": ["MMAA", "MMAB", "MMAB", "MMAD", "MMAA"],
+        "Especie": ["species 2", "species 1", "species 2", "species 1", "species 3"],
+        "n_individuos": [1, 1, 1, 2, 10],
     }
     bird_counts_by_transect_and_species = pd.DataFrame(records_dict)
     transect_areas = {"MMAA": 0.5, "MMAB": 1, "MMAD": 2}
@@ -147,6 +142,6 @@ def tests_join_bird_counts_and_transect_areas():
     )
     expected_column_names = ["clave_muestreo", "Especie", "n_individuos", "area"]
     assert (obtained.columns.values == expected_column_names).all()
-    expected_areas = [0.5, 1, 1, 2]
+    expected_areas = [0.5, 1, 1, 2, 0.5]
     obtained_areas = obtained.area.values
     assert (obtained_areas == expected_areas).all()
