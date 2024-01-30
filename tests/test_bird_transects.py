@@ -7,6 +7,7 @@ from transects import (
     get_density_by_specie,
     get_total_area,
     get_transect_area,
+    join_bird_counts_and_transect_areas,
 )
 
 
@@ -126,4 +127,21 @@ def test_count_species_by_method():
     obtained = count_total_individuals_by_species(records_df)
     expected_actitis_number = 13
     assert obtained.loc["Actitis macularius"] == expected_actitis_number
-    obtained.to_csv("total_bird_count.csv")
+
+
+def tests_join_bird_counts_and_transect_areas():
+    records_dict = {
+        "clave_muestreo": ["MMAA", "MMAB", "MMAB", "MMAD"],
+        "Especie": [
+            "species 2",
+            "species 1",
+            "species 1",
+            "species 1",
+        ],
+        "n_individuos": [1, 1, 1, 2],
+    }
+    bird_counts_by_transect_and_species = pd.DataFrame(records_dict)
+    transect_areas = {"MMAA": 0.5, "MMAB": 1, "MMAD": 2}
+    obtained = join_bird_counts_and_transect_areas(
+        bird_counts_by_transect_and_species, transect_areas
+    )
