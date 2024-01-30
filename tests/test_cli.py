@@ -11,6 +11,11 @@ bird_records_path = "tests/data/bird_records.csv"
 runner = CliRunner()
 
 
+def test_write_bird_transect_densities():
+    result = runner.invoke(cli, ["write-bird-transect-densities", "--help"])
+    assert result.exit_code == 0
+
+
 def test_write_bird_densities():
     result = runner.invoke(cli, ["write-bird-densities", "--help"])
     assert result.exit_code == 0
