@@ -8,7 +8,7 @@ def get_density_by_species_and_transects(bird_records_df, transect_df):
     joined = join_bird_counts_and_transect_areas(
         bird_counts_by_transect_and_species, transect_areas
     )
-    joined["density"] = joined["n_individuos"] / (joined["area"] / 10_000)
+    joined["density"] = joined["n_individuos"] / joined["area"]
     return joined
 
 
@@ -24,14 +24,14 @@ def get_total_area(transects_info_df):
     total = 0.0
     for value in areas.values():
         total += value
-    return total / 10_000
+    return total
 
 
 def get_transect_area(transects_info):
     area_differentials = {"MMAA": 60, "MMAB": (np.pi * (30) ** 2), "MMAD": 60}
     areas = {}
     for key in area_differentials.keys():
-        areas[key] = calculate_transect_area(transects_info, key, area_differentials)
+        areas[key] = calculate_transect_area(transects_info, key, area_differentials) / 10_000
     return areas
 
 
