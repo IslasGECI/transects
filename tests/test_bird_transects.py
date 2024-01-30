@@ -135,7 +135,7 @@ def tests_join_bird_counts_and_transect_areas():
         "Especie": [
             "species 2",
             "species 1",
-            "species 1",
+            "species 2",
             "species 1",
         ],
         "n_individuos": [1, 1, 1, 2],
@@ -147,3 +147,6 @@ def tests_join_bird_counts_and_transect_areas():
     )
     expected_column_names = ["clave_muestreo", "Especie", "n_individuos", "area"]
     assert (obtained.columns.values == expected_column_names).all()
+    expected_areas = [0.5, 1, 1, 2]
+    obtained_areas = obtained.area.values
+    assert obtained_areas == expected_areas
