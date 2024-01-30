@@ -53,8 +53,7 @@ def test_get_transect_area():
     expected_area_MMAB = 5654.866
     assert approx(obtained["MMAB"]) == expected_area_MMAB
 
-    transect_from_csv = pd.read_csv(transect_path)
-    obtained = get_transect_area(transect_from_csv)
+    obtained = get_transect_area(transect_df)
     expected_len = 3
     assert len(obtained) == expected_len
     expected_area_MMAA = 1470 * 60
