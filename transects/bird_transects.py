@@ -8,7 +8,7 @@ def get_density_by_species_and_transects(bird_records_df, transect_df):
     joined = join_bird_counts_and_transect_areas(
         bird_counts_by_transect_and_species, transect_areas
     )
-    joined["density"] = joined["n_individuos"] / joined["area"]
+    joined["density"] = joined["n_individuos"] / (joined["area"] / 10_000)
     return joined
 
 
