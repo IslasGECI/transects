@@ -41,11 +41,10 @@ def calculate_transect_area(transects_info, transect_key, area_differentials):
     transect_mask = transects_info.clave_muestreo == transect_key
     transect_length = get_transect_length(transects_info, transect_mask)
     are_transects = transects_info[transect_mask].punto_transecto.str.contains("T").all()
+    number_points = len(transect_length)
     if are_transects:
         return transect_length[0] * area_differentials[transect_key]
-    else:
-        number_points = len(transect_length)
-        return number_points * area_differentials[transect_key]
+    return number_points * area_differentials[transect_key]
 
 
 def get_transect_length(transects_info, transect_mask):
