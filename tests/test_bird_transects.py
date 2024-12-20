@@ -2,7 +2,7 @@ import pandas as pd
 from pytest import approx
 
 from transects import (
-    xxcount_by_specie_and_method,
+    count_by_specie_and_method,
     count_total_individuals_by_species,
     get_mean_density_by_specie,
     get_density_by_specie_and_day,
@@ -107,7 +107,7 @@ def tests_count_by_specie_and_method():
         "n_individuos": [1, 2, 10],
     }
     records_df_from_dict = pd.DataFrame(records_dict)
-    obtained = xxcount_by_specie_and_method(records_df_from_dict)
+    obtained = count_by_specie_and_method(records_df_from_dict)
     expected_rows = 2
     assert len(obtained) == expected_rows
     expected_MMAA_species = 2
@@ -127,11 +127,11 @@ def tests_count_by_specie_and_method():
         "n_individuos": [1, 2, 8, 4, 5],
     }
     records_df_from_dict = pd.DataFrame(records_dict)
-    obtained = xxcount_by_specie_and_method(records_df_from_dict)
+    obtained = count_by_specie_and_method(records_df_from_dict)
     expected_MMAA_species = 8
     assert obtained.loc["MMAA", "20/10/2023", "species 2"] == expected_MMAA_species
 
-    obtained = xxcount_by_specie_and_method(bird_records_df)
+    obtained = count_by_specie_and_method(bird_records_df)
     expected_actitis_number = 4
     assert obtained.loc[("MMAA", "18/11/2023", "Actitis macularius")] == expected_actitis_number
 
