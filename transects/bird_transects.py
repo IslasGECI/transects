@@ -3,7 +3,7 @@ import pandas as pd
 
 
 def get_density_by_species_and_transects(bird_records_df, transect_df):
-    bird_counts_by_transect_and_species = count_by_specie_and_method(bird_records_df).to_frame()
+    bird_counts_by_transect_and_species = xxcount_by_specie_and_method(bird_records_df).to_frame()
     transect_areas = get_transect_area(transect_df)
     joined = join_bird_counts_and_transect_areas(
         bird_counts_by_transect_and_species, transect_areas
