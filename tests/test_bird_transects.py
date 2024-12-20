@@ -106,6 +106,7 @@ def tests_count_by_specie_and_method():
     assert obtained.loc["MMAA", "25/11/2024", "species 1"] == expected_MMAA_species
 
     records_dict = {
+        "Fecha": ["20/10/2023", "20/10/2023", "20/10/2023", "20/10/2023", "20/10/2023"],
         "clave_muestreo": ["MMAD", "MMAD", "MMAA", "MMAB", "MMAB"],
         "punto_transecto": ["T1", "T1", "T3", "2", "3"],
         "Especie": [
@@ -118,9 +119,9 @@ def tests_count_by_specie_and_method():
         "n_individuos": [1, 2, 8, 4, 5],
     }
     records_df_from_dict = pd.DataFrame(records_dict)
-    obtained = count_by_specie_and_method(records_df_from_dict)
+    obtained = xxcount_by_specie_and_method(records_df_from_dict)
     expected_MMAA_species = 8
-    assert obtained.loc["MMAA", "species 2"] == expected_MMAA_species
+    assert obtained.loc["MMAA", "20/10/2023", "species 2"] == expected_MMAA_species
 
     obtained = count_by_specie_and_method(bird_records_df)
     expected_actitis_number = 4
