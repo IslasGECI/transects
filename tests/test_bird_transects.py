@@ -7,6 +7,7 @@ from transects import (
     get_mean_density_by_specie,
     get_density_by_specie_and_day,
     get_density_by_species_and_transects,
+    get_mean_density_by_species_and_transects,
     get_total_area,
     get_transect_area,
     join_bird_counts_and_transect_areas,
@@ -31,12 +32,10 @@ def test_get_density_by_species_and_transects():
     )
 
 
-# def test_get_density_by_species_and_transects():
-#     obtained = get_mean_density_by_species_and_transects(
-#         bird_records_df, transect_df)
-#     assert (obtained_columns == expected_columns).all()
-#     assert obtained.loc["MMAA", "Trogon elegans"].density == approx(
-#         2 / 8.82, abs=1e-6)
+def test_get_density_by_species_and_transects():
+    obtained = get_mean_density_by_species_and_transects(bird_records_df, transect_df)
+    assert (obtained_columns == expected_columns).all()
+    assert obtained.loc["MMAA", "Trogon elegans"].density == approx(2 / 8.82, abs=1e-6)
 
 
 def test_get_density_by_specie():
