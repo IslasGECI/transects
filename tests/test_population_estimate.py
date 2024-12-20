@@ -51,7 +51,6 @@ def test_write_estimations():
 
     f = open(output_path, "r")
     json_content = json.loads(f.read())
-    print(json_content)
     assert json_content["minimo"] == "639"
     assert json_content["maximo"] == "1,426"
     assert json_content["media"] == "1,521"
