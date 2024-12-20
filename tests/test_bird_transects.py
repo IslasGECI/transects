@@ -30,10 +30,14 @@ def test_get_density_by_species_and_transects():
 def test_get_density_by_specie():
     obtained = get_density_by_specie(bird_records_df, transect_df)
     expected_columns = 2
-    print(obtained)
     assert len(obtained.columns) == expected_columns
     assert (
-        approx(obtained.loc["Setophaga pitiayumii insularis", "densidad"], abs=1e-4) == 53 / 23.6474
+        approx(obtained.loc["Setophaga pitiayumii insularis", "densidad"].sum(), abs=1e-4)
+        == 53 / 23.6474
+    )
+    assert (
+        approx(obtained.loc["Setophaga pitiayumii insularis", "16/11/2023", "densidad"], abs=1e-4)
+        == 21 / 23.6474
     )
 
 
@@ -140,6 +144,7 @@ def test_count_species_by_method():
     print(obtained)
     expected_actitis_number_19_11 = 2
     assert obtained.loc["Actitis macularius", "19/11/2023"] == expected_actitis_number_19_11
+    assert obtained.loc["Actitis macularius"].sum() == 13
 
 
 def tests_join_bird_counts_and_transect_areas():
