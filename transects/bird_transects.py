@@ -12,7 +12,7 @@ def get_density_by_species_and_transects(bird_records_df, transect_df):
     return joined
 
 
-def get_density_by_specie(bird_records_df, transects_info_df):
+def get_density_by_specie_and_day(bird_records_df, transects_info_df):
     counts = xxcount_total_individuals_by_species(bird_records_df).to_frame()
     total_area = get_total_area(transects_info_df)
     counts["densidad"] = counts.n_individuos / total_area
