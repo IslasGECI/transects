@@ -61,6 +61,13 @@ def count_by_specie_and_method(records_df):
     return filtered_records.groupby(["clave_muestreo", "Especie"])["n_individuos"].agg("sum")
 
 
+def xxcount_by_specie_and_method(records_df):
+    filtered_records = filter_transects_of_interes(records_df)
+    return filtered_records.groupby(["clave_muestreo", "Fecha", "Especie"])["n_individuos"].agg(
+        "sum"
+    )
+
+
 def count_total_individuals_by_species(records_df):
     filtered_records = filter_transects_of_interes(records_df)
     return filtered_records.groupby(["Especie", "Fecha"])["n_individuos"].agg("sum")
