@@ -92,7 +92,21 @@ def count_total_individuals_by_species(records_df):
 
 
 def filter_transects_of_interes(records_df):
-    claves = ["MMAA", "MMAB", "MMAD"]
+    claves = [
+        "MMAA",
+        "MMAB",
+        "MMAC",
+        "MMAD",
+        "MMAE",
+        "MMAF",
+        "MMAG",
+        "MMAH",
+        "MMAJ",
+        "MMAK",
+        "MMAL",
+        "T6",
+        "T12",
+    ]
     return records_df.query(f"clave_muestreo.isin({claves})")
 
 
