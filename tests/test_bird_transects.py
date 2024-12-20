@@ -31,7 +31,7 @@ def test_get_density_by_species_and_transects():
     )
 
 
-def test_get_density_by_species_and_transects():
+def test_get_mean_density_by_species_and_transects():
     obtained = get_mean_density_by_species_and_transects(bird_records_df, transect_df)
     assert obtained.loc["MMAA", "Trogon elegans"].density == approx(2 / 8.82, abs=1e-6)
 
