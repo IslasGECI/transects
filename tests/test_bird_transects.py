@@ -4,6 +4,7 @@ from pytest import approx
 from transects import (
     count_by_specie_and_method,
     xxcount_total_individuals_by_species,
+    get_mean_density_by_specie,
     get_density_by_specie_and_day,
     get_density_by_species_and_transects,
     get_total_area,
@@ -38,8 +39,13 @@ def test_get_density_by_specie():
     print(obtained.loc["Setophaga pitiayumii insularis"])
     obtained_density_by_day = obtained.loc["Setophaga pitiayumii insularis", "16/11/2023"].densidad
     assert approx(obtained_density_by_day, abs=1e-4) == 21 / 23.6474
-    # assert approx(
-    #     obtained.loc["Setophaga pitiayumii insularis"].densidad, abs=1e-4) == 13.25 / 23.6474
+
+
+def tests_get_mean_density_by_specie():
+    obtained = get_mean_density_by_specie(bird_records_df, transect_df)
+    assert (
+        approx(obtained.loc["Setophaga pitiayumii insularis"].densidad, abs=1e-4) == 13.25 / 23.6474
+    )
 
 
 def test_get_transect_area():
