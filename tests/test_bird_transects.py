@@ -62,11 +62,11 @@ def test_get_transect_area():
     transect_dict = {
         "clave_muestreo": ["MMAA", "MMAB", "MMAB", "MMAC", "MMAD"],
         "longitud_transecto": [100, 200, 200, 400, 300],
-        "punto_transecto": ["T1", "1", "2", "NA", "T2"],
+        "punto_transecto": ["T1", "1", "2", "T6", "T2"],
     }
     transect_df_from_dict = pd.DataFrame(transect_dict)
     obtained = get_transect_area(transect_df_from_dict)
-    expected_len = 3
+    expected_len = 4
     assert len(obtained) == expected_len
     expected_area_MMAA = 0.6
     assert obtained["MMAA"] == expected_area_MMAA
@@ -74,6 +74,8 @@ def test_get_transect_area():
     assert obtained["MMAD"] == expected_area_MMAD
     expected_area_MMAB = 0.5654866
     assert approx(obtained["MMAB"]) == expected_area_MMAB
+    expected_area_MMAC = (400 * 60) / 10_000
+    assert approx(obtained["MMAC"]) == expected_area_MMAC
 
     obtained = get_transect_area(transect_df)
     expected_len = 3
