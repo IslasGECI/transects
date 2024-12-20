@@ -37,22 +37,26 @@ def test_get_mean_density_by_species_and_transects():
     assert obtained.loc["MMAA", "Trogon elegans"].density == approx(2 / 8.82, abs=1e-6)
 
 
+total_area_2024 = 399.66743
+
+
 def test_get_density_by_specie():
     obtained = get_density_by_specie_and_day(bird_records_df, transect_df)
     expected_columns = 2
     assert len(obtained.columns) == expected_columns
     assert (
         approx(obtained.loc["Setophaga pitiayumii insularis", "densidad"].sum(), abs=1e-4)
-        == 53 / 23.6474
+        == 53 / total_area_2024
     )
     obtained_density_by_day = obtained.loc["Setophaga pitiayumii insularis", "16/11/2023"].densidad
-    assert approx(obtained_density_by_day, abs=1e-4) == 21 / 23.6474
+    assert approx(obtained_density_by_day, abs=1e-4) == 21 / total_area_2024
 
 
 def tests_get_mean_density_by_specie():
     obtained = get_mean_density_by_specie(bird_records_df, transect_df)
     assert (
-        approx(obtained.loc["Setophaga pitiayumii insularis"].densidad, abs=1e-4) == 13.25 / 23.6474
+        approx(obtained.loc["Setophaga pitiayumii insularis"].densidad, abs=1e-4)
+        == 13.25 / total_area_2024
     )
     obtained_columns = obtained.columns.values
     expected_columns = ["n_individuos", "densidad"]
@@ -131,8 +135,8 @@ def test_get_transect_area():
     assert approx(obtained["T6"]) == expected_transect_area
     assert approx(obtained["T12"]) == expected_transect_area
 
-    obtained = get_transect_area(transect_df)
-    expected_len = 3
+    obtained = xxget_transect_area(transect_df)
+    expected_len = 13
     assert len(obtained) == expected_len
     expected_area_MMAA = (1470 * 60) / 10_000
     assert obtained["MMAA"] == expected_area_MMAA
@@ -143,7 +147,7 @@ def test_get_transect_area():
 
 
 def test_get_total_area():
-    expected = 23.647433388
+    expected = 399.66743
     obtained = get_total_area(transect_df)
     assert approx(obtained) == expected
 

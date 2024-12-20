@@ -13,7 +13,7 @@ def get_mean_density_by_species_and_transects(bird_records_df, transect_df):
 
 def get_density_by_species_and_transects(bird_records_df, transect_df):
     bird_counts_by_transect_and_species = count_by_specie_and_method(bird_records_df).to_frame()
-    transect_areas = get_transect_area(transect_df)
+    transect_areas = xxget_transect_area(transect_df)
     joined = join_bird_counts_and_transect_areas(
         bird_counts_by_transect_and_species, transect_areas
     )
@@ -34,7 +34,7 @@ def get_density_by_specie_and_day(bird_records_df, transects_info_df):
 
 
 def get_total_area(transects_info_df):
-    areas = get_transect_area(transects_info_df)
+    areas = xxget_transect_area(transects_info_df)
     total = 0.0
     for value in areas.values():
         total += value
