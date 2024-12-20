@@ -129,7 +129,6 @@ def test_count_species_by_method():
     records_df_from_dict = pd.DataFrame(records_dict)
     obtained = xxcount_total_individuals_by_species(records_df_from_dict)
     expected_species_1 = 4
-    print(obtained)
     assert obtained.loc["species 1", "10/02/2024"] == expected_species_1
     expected_species_1 = 1
     assert obtained.loc["species 1", "01/02/2024"] == expected_species_1
@@ -137,8 +136,10 @@ def test_count_species_by_method():
     assert obtained.loc["species 2", "01/02/2024"] == expected_species_2
 
     obtained = xxcount_total_individuals_by_species(bird_records_df)
-    expected_actitis_number = 13
-    assert obtained.loc["Actitis macularius"] == expected_actitis_number
+
+    print(obtained)
+    expected_actitis_number_19_11 = 6
+    assert obtained.loc["Actitis macularius", "19/11/2023"] == expected_actitis_number_19_11
 
 
 def tests_join_bird_counts_and_transect_areas():
