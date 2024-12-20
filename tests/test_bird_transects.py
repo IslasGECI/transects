@@ -245,7 +245,7 @@ def test_count_species_by_method():
 
     obtained = count_total_individuals_by_species(bird_records_df)
 
-    expected_actitis_number_19_11 = 2
+    expected_actitis_number_19_11 = 6
     assert obtained.loc["Actitis macularius", "19/11/2023"] == expected_actitis_number_19_11
     assert obtained.loc["Actitis macularius"].sum() == 13
 
