@@ -52,7 +52,21 @@ def get_transect_area(transects_info):
 
 
 def xxget_transect_area(transects_info):
-    area_differentials = {"MMAA": 60, "MMAB": (np.pi * (30) ** 2), "MMAC": 60, "MMAD": 60}
+    area_differentials = {
+        "MMAA": 60,
+        "MMAB": (np.pi * (30) ** 2),
+        "MMAC": 60,
+        "MMAD": 60,
+        "MMAE": 60,
+        "MMAF": 60,
+        "MMAG": 60,
+        "MMAH": 60,
+        "MMAJ": 60,
+        "MMAK": 60,
+        "MMAL": 60,
+        "T6": 60,
+        "T12": 60,
+    }
     areas = {}
     square_meters_to_hectares = 10_000
     for key in area_differentials.keys():
