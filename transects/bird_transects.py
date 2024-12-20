@@ -51,6 +51,16 @@ def get_transect_area(transects_info):
     return areas
 
 
+def xxget_transect_area(transects_info):
+    area_differentials = {"MMAA": 60, "MMAB": (np.pi * (30) ** 2), "MMAC": 60, "MMAD": 60}
+    areas = {}
+    square_meters_to_hectares = 10_000
+    for key in area_differentials.keys():
+        transect_area = calculate_transect_area(transects_info, key, area_differentials)
+        areas[key] = transect_area / square_meters_to_hectares
+    return areas
+
+
 def calculate_transect_area(transects_info, transect_key, area_differentials):
     transect_mask = transects_info.clave_muestreo == transect_key
     transect_length = get_transect_length(transects_info, transect_mask)

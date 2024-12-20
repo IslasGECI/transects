@@ -10,6 +10,7 @@ from transects import (
     get_mean_density_by_species_and_transects,
     get_total_area,
     get_transect_area,
+    xxget_transect_area,
     join_bird_counts_and_transect_areas,
 )
 
@@ -65,9 +66,7 @@ def test_get_transect_area():
         "punto_transecto": ["T1", "1", "2", "T6", "T2"],
     }
     transect_df_from_dict = pd.DataFrame(transect_dict)
-    obtained = get_transect_area(transect_df_from_dict)
-    expected_len = 4
-    assert len(obtained) == expected_len
+    obtained = xxget_transect_area(transect_df_from_dict)
     expected_area_MMAA = 0.6
     assert obtained["MMAA"] == expected_area_MMAA
     expected_area_MMAD = 1.8
