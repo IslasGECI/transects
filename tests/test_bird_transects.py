@@ -3,7 +3,7 @@ from pytest import approx
 
 from transects import (
     count_by_specie_and_method,
-    xxcount_total_individuals_by_species,
+    count_total_individuals_by_species,
     get_mean_density_by_specie,
     get_density_by_specie_and_day,
     get_density_by_species_and_transects,
@@ -43,7 +43,12 @@ def test_get_density_by_specie():
 
 def tests_get_mean_density_by_specie():
     obtained = get_mean_density_by_specie(bird_records_df, transect_df)
-    assert approx(obtained.loc["Setophaga pitiayumii insularis"], abs=1e-4) == 13.25 / 23.6474
+    assert (
+        approx(obtained.loc["Setophaga pitiayumii insularis"].densidad, abs=1e-4) == 13.25 / 23.6474
+    )
+    obtained_columns = obtained.columns.values
+    expected_columns = ["n_individuos", "densidad"]
+    assert (obtained_columns == expected_columns).all()
 
 
 def test_get_transect_area():
@@ -136,7 +141,7 @@ def test_count_species_by_method():
         "n_individuos": [1, 1, 1, 2, 1, 10],
     }
     records_df_from_dict = pd.DataFrame(records_dict)
-    obtained = xxcount_total_individuals_by_species(records_df_from_dict)
+    obtained = count_total_individuals_by_species(records_df_from_dict)
     expected_species_1 = 4
     assert obtained.loc["species 1", "10/02/2024"] == expected_species_1
     expected_species_1 = 1
@@ -144,7 +149,7 @@ def test_count_species_by_method():
     expected_species_2 = 1
     assert obtained.loc["species 2", "01/02/2024"] == expected_species_2
 
-    obtained = xxcount_total_individuals_by_species(bird_records_df)
+    obtained = count_total_individuals_by_species(bird_records_df)
 
     print(obtained)
     expected_actitis_number_19_11 = 2
