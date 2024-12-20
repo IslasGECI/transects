@@ -61,9 +61,54 @@ def tests_get_mean_density_by_specie():
 
 def test_get_transect_area():
     transect_dict = {
-        "clave_muestreo": ["MMAA", "MMAB", "MMAB", "MMAC", "MMAD"],
-        "longitud_transecto": [100, 200, 200, 400, 300],
-        "punto_transecto": ["T1", "1", "2", "T6", "T2"],
+        "clave_muestreo": [
+            "MMAA",
+            "MMAB",
+            "MMAB",
+            "MMAC",
+            "MMAD",
+            "MMAE",
+            "MMAF",
+            "MMAG",
+            "MMAH",
+            "MMAJ",
+            "MMAK",
+            "MMAL",
+            "T6",
+            "T12",
+        ],
+        "longitud_transecto": [
+            100,
+            200,
+            200,
+            400,
+            300,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+        ],
+        "punto_transecto": [
+            "T1",
+            "1",
+            "2",
+            "T6",
+            "T2",
+            "T",
+            "T",
+            "T",
+            "T",
+            "T",
+            "T",
+            "T",
+            "T",
+            "T",
+        ],
     }
     transect_df_from_dict = pd.DataFrame(transect_dict)
     obtained = xxget_transect_area(transect_df_from_dict)
@@ -75,6 +120,16 @@ def test_get_transect_area():
     assert approx(obtained["MMAB"]) == expected_area_MMAB
     expected_area_MMAC = (400 * 60) / 10_000
     assert approx(obtained["MMAC"]) == expected_area_MMAC
+    expected_transect_area = 0.6
+    assert approx(obtained["MMAE"]) == expected_transect_area
+    assert approx(obtained["MMAF"]) == expected_transect_area
+    assert approx(obtained["MMAG"]) == expected_transect_area
+    assert approx(obtained["MMAH"]) == expected_transect_area
+    assert approx(obtained["MMAJ"]) == expected_transect_area
+    assert approx(obtained["MMAK"]) == expected_transect_area
+    assert approx(obtained["MMAL"]) == expected_transect_area
+    assert approx(obtained["T6"]) == expected_transect_area
+    assert approx(obtained["T12"]) == expected_transect_area
 
     obtained = get_transect_area(transect_df)
     expected_len = 3
