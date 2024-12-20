@@ -2,6 +2,15 @@ import numpy as np
 import pandas as pd
 
 
+def get_mean_density_by_species_and_transects(bird_records_df, transect_df):
+    density_by_day_species_and_transects = get_density_by_species_and_transects(
+        bird_records_df, transect_df
+    )
+    return density_by_day_species_and_transects.groupby(["clave_muestreo", "Especie"]).agg(
+        {"n_individuos": "sum", "area": "mean", "density": "mean"}
+    )
+
+
 def get_density_by_species_and_transects(bird_records_df, transect_df):
     bird_counts_by_transect_and_species = xxcount_by_specie_and_method(bird_records_df).to_frame()
     transect_areas = get_transect_area(transect_df)
