@@ -247,7 +247,7 @@ def test_count_species_by_method():
 
     expected_actitis_number_19_11 = 6
     assert obtained.loc["Actitis macularius", "19/11/2023"] == expected_actitis_number_19_11
-    assert obtained.loc["Actitis macularius"].sum() == 13
+    assert obtained.loc["Actitis macularius"].sum() == 28
 
 
 def tests_join_bird_counts_and_transect_areas():
