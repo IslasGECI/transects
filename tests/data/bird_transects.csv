@@ -10,9 +10,18 @@ Arroyo al Zacatal,MMAB,2000,Bosque Tropical Subcaducifolio,7
 Arroyo al Zacatal,MMAB,2000,Bosque Tropical Subcaducifolio,8
 Arroyo al Zacatal,MMAB,2000,Bosque Tropical Subcaducifolio,9
 Arroyo al Zacatal,MMAB,2000,Bosque Tropical Subcaducifolio,10
-Laguna Salada,MMAC,45470,Laguna Salada,NA
+Laguna Salada,MMAC,45470,Laguna Salada,T6
 Laguna del Toro,MMAD,2000,Pastizal/Matorral Subinerme,T2
-Circunnavegación de la isla,MMAE,4484,Playa,T3
-Circunnavegación de la isla,MMAG,4200,Playa,T4
-Navegación Puerto Balleto - Punta Morro,MMAH,2100,Playa,T5
-Navegación Puerto Balleto - Punta Morro,MMAE,4484,Playa,NA
+Circunnavegación de la isla,XXMMAEXX,4484,Playa,T3
+Circunnavegación de la isla,XXMMAGXX,4200,Playa,T4
+Navegación Puerto Balleto - Punta Morro,XXMMAHXX,2100,Playa,T5
+Navegación Puerto Balleto - Punta Morro,XXMMAEXX,4484,Playa,NA
+Aserradero,MMAE,2000,Selva media-baja caducifolia,T7
+Camarón,MMAH,2000,Matorral alto subinerme,T8
+Bugambilias,MMAF,2000,Matorral/Regeneración,T9
+Halcones,MMAJ,1400,Matorral/Pastizal,T10
+La Calera,MMAL,1800,Matorral espinoso,T11
+Playa en Camarón,T6,2000,Playa e intermareal rocoso,T12
+Delfines,MMAK,2000,"Playa rocosa, arena y grava",T13
+Papelillo,T12,2000,Playa e intermareal rocoso,T14
+Playa Patos,MMAG,2000,Playa arenosa,T15
