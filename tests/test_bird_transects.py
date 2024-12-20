@@ -112,6 +112,7 @@ def tests_count_by_specie_and_method():
 
 def test_count_species_by_method():
     records_dict = {
+        "Fecha": ["01/02/2024", "01/02/2024", "10/02/2024", "10/02/2024", "10/02/2024", "MMAH"],
         "clave_muestreo": ["MMAA", "MMAB", "MMAB", "MMAA", "MMAA", "MMAH"],
         "punto_transecto": ["T1", "1", "2", "T1", "T1", "T3"],
         "Especie": [
@@ -126,10 +127,13 @@ def test_count_species_by_method():
     }
     records_df_from_dict = pd.DataFrame(records_dict)
     obtained = count_total_individuals_by_species(records_df_from_dict)
-    expected_species_1 = 5
-    assert obtained.loc["species 1"] == expected_species_1
+    expected_species_1 = 4
+    print(obtained)
+    assert obtained.loc["species 1", "10/02/2024"] == expected_species_1
+    expected_species_1 = 1
+    assert obtained.loc["species 1", "01/02/2024"] == expected_species_1
     expected_species_2 = 1
-    assert obtained.loc["species 2"] == expected_species_2
+    assert obtained.loc["species 2", "01/02/2024"] == expected_species_2
 
     obtained = count_total_individuals_by_species(bird_records_df)
     expected_actitis_number = 13
