@@ -4,6 +4,7 @@ from pytest import approx
 from transects import (
     count_by_specie_and_method,
     count_total_individuals_by_species,
+    filter_transects_of_interes,
     get_mean_density_by_specie,
     get_density_by_specie_and_day,
     get_density_by_species_and_transects,
@@ -149,6 +150,31 @@ def test_get_total_area():
     expected = 399.66743
     obtained = get_total_area(transect_df)
     assert approx(obtained) == expected
+
+
+def test_filter_transects_of_interes():
+    records_dict = {
+        "clave_muestreo": [
+            "MMAA",
+            "MMAB",
+            "MMAC",
+            "MMAD",
+            "MMAE",
+            "MMAF",
+            "MMAG",
+            "MMAH",
+            "MMAJ",
+            "MMAK",
+            "MMAL",
+            "T6",
+            "T12",
+            "MMZZ",
+        ],
+    }
+    records_df_from_dict = pd.DataFrame(records_dict)
+    obtained = filter_transects_of_interes(records_df_from_dict)
+    expected_number_of_keys = 13
+    assert len(obtained) == expected_number_of_keys
 
 
 def tests_count_by_specie_and_method():
