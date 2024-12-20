@@ -2,7 +2,6 @@ import pandas as pd
 from pytest import approx
 
 from transects import (
-    count_by_specie_and_method,
     xxcount_by_specie_and_method,
     count_total_individuals_by_species,
     get_mean_density_by_specie,
@@ -23,10 +22,21 @@ transect_df = pd.read_csv(transect_path)
 
 def test_get_density_by_species_and_transects():
     obtained = get_density_by_species_and_transects(bird_records_df, transect_df)
+    print(obtained)
     obtained_columns = obtained.columns.values
     expected_columns = ["n_individuos", "area", "density"]
     assert (obtained_columns == expected_columns).all()
-    assert obtained.loc["MMAA", "Trogon elegans"].density == approx(2 / 8.82, abs=1e-6)
+    assert obtained.loc["MMAA", "18/11/2023", "Trogon elegans"].density == approx(
+        2 / 8.82, abs=1e-6
+    )
+
+
+# def test_get_density_by_species_and_transects():
+#     obtained = get_mean_density_by_species_and_transects(
+#         bird_records_df, transect_df)
+#     assert (obtained_columns == expected_columns).all()
+#     assert obtained.loc["MMAA", "Trogon elegans"].density == approx(
+#         2 / 8.82, abs=1e-6)
 
 
 def test_get_density_by_specie():
