@@ -3,6 +3,7 @@ from pytest import approx
 
 from transects import (
     count_by_specie_and_method,
+    xxcount_by_specie_and_method,
     count_total_individuals_by_species,
     get_mean_density_by_specie,
     get_density_by_specie_and_day,
@@ -87,6 +88,7 @@ def test_get_total_area():
 
 def tests_count_by_specie_and_method():
     records_dict = {
+        "Fecha": ["20/11/2024", "25/11/2024", "20/11/2024"],
         "clave_muestreo": ["MMAA", "MMAA", "MMZZ"],
         "punto_transecto": ["T1", "T1", "TZ"],
         "Especie": [
@@ -97,11 +99,11 @@ def tests_count_by_specie_and_method():
         "n_individuos": [1, 2, 10],
     }
     records_df_from_dict = pd.DataFrame(records_dict)
-    obtained = count_by_specie_and_method(records_df_from_dict)
-    expected_rows = 1
+    obtained = xxcount_by_specie_and_method(records_df_from_dict)
+    expected_rows = 2
     assert len(obtained) == expected_rows
-    expected_MMAA_species = 3
-    assert obtained.loc["MMAA", "species 1"] == expected_MMAA_species
+    expected_MMAA_species = 2
+    assert obtained.loc["MMAA", "25/11/2024", "species 1"] == expected_MMAA_species
 
     records_dict = {
         "clave_muestreo": ["MMAD", "MMAD", "MMAA", "MMAB", "MMAB"],
