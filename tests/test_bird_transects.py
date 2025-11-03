@@ -6,7 +6,7 @@ from transects.bird_transects import (
     xxcount_total_individuals_by_species,
     filter_transects_of_interest,
     get_mean_density_by_species,
-    xxget_density_by_species_and_day,
+    get_density_by_species_and_day,
     get_density_by_species_and_transects,
     get_mean_density_by_species_and_transects,
     get_total_area,
@@ -41,7 +41,7 @@ total_area_2024 = 399.66743
 
 
 def test_get_density_by_specie():
-    obtained = xxget_density_by_species_and_day(bird_records_df, transect_df)
+    obtained = get_density_by_species_and_day(bird_records_df, transect_df)
     expected_columns = 2
     assert len(obtained.columns) == expected_columns
     assert (
