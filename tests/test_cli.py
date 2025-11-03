@@ -1,4 +1,5 @@
 from transects import cli
+from geci_test_tools import if_exist_remove
 
 
 from typer.testing import CliRunner
@@ -18,8 +19,7 @@ def test_write_bird_transect_densities():
 
     output_path = "tests/bird_transect_densities.csv"
 
-    if os.path.exists(output_path):
-        os.remove(output_path)
+    if_exist_remove(output_path)
 
     result = runner.invoke(
         cli,
@@ -44,8 +44,7 @@ def test_write_bird_densities():
 
     output_path = "tests/bird_densities.csv"
 
-    if os.path.exists(output_path):
-        os.remove(output_path)
+    if_exist_remove(output_path)
 
     result = runner.invoke(
         cli,
@@ -70,8 +69,7 @@ def test_write_rodent_trapping_success():
 
     output_path = "tests/rodent_trapping_success.csv"
 
-    if os.path.exists(output_path):
-        os.remove(output_path)
+    if_exist_remove(output_path)
 
     traps_status_data_path = "tests/data/rodent_captures.csv"
     result = runner.invoke(
@@ -96,8 +94,7 @@ def test_write_selected_bird_records():
     output_terrestrial_path = "tests/terrestrial_selected_bird_records.csv"
     observed_path = "tests/data/observed_bird_species.csv"
 
-    if os.path.exists(output_terrestrial_path):
-        os.remove(output_terrestrial_path)
+    if_exist_remove(output_terrestrial_path)
 
     result = runner.invoke(
         cli,
@@ -119,8 +116,7 @@ def test_write_selected_bird_records():
     output_resident_path = "tests/resident_selected_bird_records.csv"
     observed_path = "tests/data/observed_bird_species.csv"
 
-    if os.path.exists(output_resident_path):
-        os.remove(output_resident_path)
+    if_exist_remove(output_resident_path)
 
     result = runner.invoke(
         cli,
@@ -154,8 +150,7 @@ def test_write_resident_bird_records():
     output_path = "tests/resident_records.csv"
     observed_path = "tests/data/observed_bird_species.csv"
 
-    if os.path.exists(output_path):
-        os.remove(output_path)
+    if_exist_remove(output_path)
 
     result = runner.invoke(
         cli,
