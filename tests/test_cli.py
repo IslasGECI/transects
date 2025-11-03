@@ -3,6 +3,7 @@ from transects import cli
 
 from typer.testing import CliRunner
 import os
+import pandas as pd
 
 
 transect_path = "tests/data/bird_transects.csv"
@@ -114,6 +115,33 @@ def test_write_selected_bird_records():
     )
     assert result.exit_code == 0
     assert os.path.exists(output_path)
+
+    output_path = "tests/resident_selected_bird_records.csv"
+    observed_path = "tests/data/observed_bird_species.csv"
+
+    if os.path.exists(output_path):
+        os.remove(output_path)
+
+    result = runner.invoke(
+        cli,
+        [
+            "write-selected-bird-records",
+            "--observed-birds",
+            observed_path,
+            "--bird-records",
+            bird_records_path,
+            "--group",
+            "resident",
+            "--output-path",
+            output_path,
+        ],
+    )
+    assert result.exit_code == 0
+    assert os.path.exists(output_path)
+
+    terrestrial_df = pd.read_csv("tests/terrestrial_selected_bird_records.csv")
+    resident_df = pd.read_csv("tests/resident_selected_bird_records.csv")
+    assert len(terrestrial_df) != len(resident_df)
 
 
 def test_write_resident_bird_records():
