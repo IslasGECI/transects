@@ -1,4 +1,8 @@
-from transects import filter_resident_birds, filter_resident_records, filter_terrestrial_birds
+from transects.filter_resident_birds import (
+    filter_resident_birds,
+    filter_species_from_series,
+    filter_terrestrial_birds,
+)
 
 import pandas as pd
 
@@ -38,10 +42,10 @@ def test_filter_resident_records():
         }
     )
     resident_birds_df = pd.Series(["Columbina passerina"])
-    obtained = filter_resident_records(resident_birds_df, records_list_df)
+    obtained = filter_species_from_series(resident_birds_df, records_list_df)
     expected_rows = 1
     assert len(obtained) == expected_rows
     resident_birds_df = pd.Series(["Anas discors"])
-    obtained = filter_resident_records(resident_birds_df, records_list_df)
+    obtained = filter_species_from_series(resident_birds_df, records_list_df)
     expected_rows = 2
     assert len(obtained) == expected_rows
