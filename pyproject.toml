@@ -20,3 +20,8 @@ requires-python=">=3.9"
 
 [tool.flit.scripts]
 transects = "transects.cli:cli"
+
+[tool.flit.metadata.requires-extra]
+dev = [
+    "geci-test-tools",
+]

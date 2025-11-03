@@ -59,6 +59,9 @@ init_github:
 install:
 	pip install --editable .
 
+install_dev:
+	pip install --editable .[dev]
+
 linter:
 	$(call lint, ${module})
 	$(call lint, tests)
