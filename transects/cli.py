@@ -1,12 +1,33 @@
-from .rodent_transects import calculate_trapping_success
-from .bird_transects import get_mean_density_by_specie, get_mean_density_by_species_and_transects
-from .filter_resident_birds import filter_resident_birds, filter_species_from_series
+from transects.rodent_transects import calculate_trapping_success
+from transects.bird_transects import (
+    get_mean_density_by_specie,
+    get_mean_density_by_species_and_transects,
+)
+from transects.filter_resident_birds import (
+    filter_resident_birds,
+    filter_species_from_series,
+    filter_terrestrial_birds,
+)
 
 import pandas as pd
 import typer
 from typing_extensions import Annotated
 
 cli = typer.Typer()
+
+
+@cli.command()
+def write_selected_bird_records(
+    observed_birds: Annotated[str, typer.Option()],
+    bird_records: Annotated[str, typer.Option()],
+    group: Annotated[str, typer.Option()],
+    output_path: Annotated[str, typer.Option()],
+):
+    observed_birds_df = pd.read_csv(observed_birds)
+    bird_records_df = pd.read_csv(bird_records)
+    filter_dictionary = {"terrestrial": filter_terrestrial_birds, "resident": filter_resident_birds}
+    selected_birds_df = filter_dictionary[group](observed_birds_df)
+    filter_species_from_series(selected_birds_df, bird_records_df).to_csv(output_path)
 
 
 @cli.command()
