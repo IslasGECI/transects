@@ -29,6 +29,20 @@ def get_mean_density_by_species(bird_records_df, transect_df):
     return density_by_day.groupby(level="Especie").agg({"n_individuos": "sum", "densidad": "mean"})
 
 
+def xxget_mean_density_by_species(bird_records_df, transect_df):
+    density_by_day = xxget_density_by_species_and_day(bird_records_df, transect_df)
+    return density_by_day.groupby(level="species_level_name").agg(
+        {"n_individuos": "sum", "densidad": "mean"}
+    )
+
+
+def xxget_density_by_species_and_day(bird_records_df, transects_info_df):
+    counts = xxcount_total_individuals_by_species(bird_records_df).to_frame()
+    total_area = get_total_area(transects_info_df)
+    counts["densidad"] = counts.n_individuos / total_area
+    return counts
+
+
 def get_density_by_species_and_day(bird_records_df, transects_info_df):
     counts = count_total_individuals_by_species(bird_records_df).to_frame()
     total_area = get_total_area(transects_info_df)

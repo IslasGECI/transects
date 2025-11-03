@@ -5,8 +5,8 @@ from transects.bird_transects import (
     count_by_specie_and_method,
     xxcount_total_individuals_by_species,
     filter_transects_of_interest,
-    get_mean_density_by_species,
-    get_density_by_species_and_day,
+    xxget_mean_density_by_species,
+    xxget_density_by_species_and_day,
     get_density_by_species_and_transects,
     get_mean_density_by_species_and_transects,
     get_total_area,
@@ -41,22 +41,21 @@ total_area_2024 = 399.66743
 
 
 def test_get_density_by_specie():
-    obtained = get_density_by_species_and_day(bird_records_df, transect_df)
+    obtained = xxget_density_by_species_and_day(bird_records_df, transect_df)
     expected_columns = 2
     assert len(obtained.columns) == expected_columns
     assert (
-        approx(obtained.loc["Setophaga pitiayumii insularis", "densidad"].sum(), abs=1e-4)
+        approx(obtained.loc["Setophaga pitiayumii", "densidad"].sum(), abs=1e-4)
         == 53 / total_area_2024
     )
-    obtained_density_by_day = obtained.loc["Setophaga pitiayumii insularis", "16/11/2023"].densidad
+    obtained_density_by_day = obtained.loc["Setophaga pitiayumii", "16/11/2023"].densidad
     assert approx(obtained_density_by_day, abs=1e-4) == 21 / total_area_2024
 
 
 def tests_get_mean_density_by_specie():
-    obtained = get_mean_density_by_species(bird_records_df, transect_df)
+    obtained = xxget_mean_density_by_species(bird_records_df, transect_df)
     assert (
-        approx(obtained.loc["Setophaga pitiayumii insularis"].densidad, abs=1e-4)
-        == 13.25 / total_area_2024
+        approx(obtained.loc["Setophaga pitiayumii"].densidad, abs=1e-4) == 13.25 / total_area_2024
     )
     obtained_columns = obtained.columns.values
     expected_columns = ["n_individuos", "densidad"]
