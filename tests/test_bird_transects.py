@@ -4,7 +4,7 @@ from pytest import approx
 from transects.bird_transects import (
     count_by_specie_and_method,
     count_total_individuals_by_species,
-    filter_transects_of_interes,
+    filter_transects_of_interest,
     get_mean_density_by_species,
     get_density_by_species_and_day,
     get_density_by_species_and_transects,
@@ -172,7 +172,7 @@ def test_filter_transects_of_interes():
         ],
     }
     records_df_from_dict = pd.DataFrame(records_dict)
-    obtained = filter_transects_of_interes(records_df_from_dict)
+    obtained = filter_transects_of_interest(records_df_from_dict)
     expected_number_of_keys = 13
     assert len(obtained) == expected_number_of_keys
 

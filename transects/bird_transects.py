@@ -80,18 +80,18 @@ def get_transect_length(transects_info, transect_mask):
 
 
 def count_by_specie_and_method(records_df):
-    filtered_records = filter_transects_of_interes(records_df)
+    filtered_records = filter_transects_of_interest(records_df)
     return filtered_records.groupby(["clave_muestreo", "Fecha", "Especie"])["n_individuos"].agg(
         "sum"
     )
 
 
 def count_total_individuals_by_species(records_df):
-    filtered_records = filter_transects_of_interes(records_df)
+    filtered_records = filter_transects_of_interest(records_df)
     return filtered_records.groupby(["Especie", "Fecha"])["n_individuos"].agg("sum")
 
 
-def filter_transects_of_interes(records_df):
+def filter_transects_of_interest(records_df):
     claves = [
         "MMAA",
         "MMAB",
