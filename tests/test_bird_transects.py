@@ -4,6 +4,7 @@ from pytest import approx
 from transects.bird_transects import (
     count_by_specie_and_method,
     count_total_individuals_by_species,
+    xxcount_total_individuals_by_species,
     filter_transects_of_interest,
     get_mean_density_by_species,
     get_density_by_species_and_day,
@@ -235,7 +236,7 @@ def test_count_species_by_method():
         "n_individuos": [1, 1, 1, 2, 1, 10],
     }
     records_df_from_dict = pd.DataFrame(records_dict)
-    obtained = count_total_individuals_by_species(records_df_from_dict)
+    obtained = xxcount_total_individuals_by_species(records_df_from_dict)
     expected_species_1 = 4
     assert obtained.loc["species 1", "10/02/2024"] == expected_species_1
     expected_species_1 = 1

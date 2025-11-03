@@ -2,6 +2,9 @@ import numpy as np
 import pandas as pd
 
 
+from transects.reduce_to_species_level import add_species_level_column
+
+
 def get_mean_density_by_species_and_transects(bird_records_df, transect_df):
     density_by_day_species_and_transects = get_density_by_species_and_transects(
         bird_records_df, transect_df
@@ -89,6 +92,14 @@ def count_by_specie_and_method(records_df):
 def count_total_individuals_by_species(records_df):
     filtered_records = filter_transects_of_interest(records_df)
     return filtered_records.groupby(["Especie", "Fecha"])["n_individuos"].agg("sum")
+
+
+def xxcount_total_individuals_by_species(records_df):
+    filtered_records = filter_transects_of_interest(records_df)
+    filtered_records_reduced_by_species = add_species_level_column(filtered_records)
+    return filtered_records_reduced_by_species.groupby(["species_level_name", "Fecha"])[
+        "n_individuos"
+    ].agg("sum")
 
 
 def filter_transects_of_interest(records_df):
