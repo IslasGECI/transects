@@ -1,5 +1,5 @@
 from transects import cli
-from geci_test_tools import if_exist_remove
+from geci_test_tools import assert_exist, if_exist_remove
 
 
 from typer.testing import CliRunner
@@ -34,8 +34,8 @@ def test_write_bird_transect_densities():
         ],
     )
     assert result.exit_code == 0
-    assert os.path.exists(output_path)
-    # os.remove(output_path)
+    assert_exist(output_path)
+    os.remove(output_path)
 
 
 def test_write_bird_densities():
@@ -59,8 +59,8 @@ def test_write_bird_densities():
         ],
     )
     assert result.exit_code == 0
-    assert os.path.exists(output_path)
-    # os.remove(output_path)
+    assert_exist(output_path)
+    os.remove(output_path)
 
 
 def test_write_rodent_trapping_success():
@@ -83,7 +83,7 @@ def test_write_rodent_trapping_success():
         ],
     )
     assert result.exit_code == 0
-    assert os.path.exists(output_path)
+    assert_exist(output_path)
     os.remove(output_path)
 
 
@@ -111,7 +111,7 @@ def test_write_selected_bird_records():
         ],
     )
     assert result.exit_code == 0
-    assert os.path.exists(output_terrestrial_path)
+    assert_exist(output_terrestrial_path)
 
     output_resident_path = "tests/resident_selected_bird_records.csv"
     observed_path = "tests/data/observed_bird_species.csv"
@@ -133,7 +133,7 @@ def test_write_selected_bird_records():
         ],
     )
     assert result.exit_code == 0
-    assert os.path.exists(output_resident_path)
+    assert_exist(output_resident_path)
 
     terrestrial_df = pd.read_csv(output_terrestrial_path)
     resident_df = pd.read_csv(output_resident_path)
@@ -165,4 +165,4 @@ def test_write_resident_bird_records():
         ],
     )
     assert result.exit_code == 0
-    assert os.path.exists(output_path)
+    assert_exist(output_path)
