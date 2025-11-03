@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- CLI command `write-bird-records-by-group` to filter the bird records by the `group` parameter.
 
 ### Fixed
 
