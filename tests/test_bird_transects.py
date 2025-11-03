@@ -3,7 +3,6 @@ from pytest import approx
 
 from transects.bird_transects import (
     count_by_specie_and_method,
-    count_total_individuals_by_species,
     xxcount_total_individuals_by_species,
     filter_transects_of_interest,
     get_mean_density_by_species,
@@ -244,7 +243,7 @@ def test_count_species_by_method():
     expected_species_2 = 1
     assert obtained.loc["species 2", "01/02/2024"] == expected_species_2
 
-    obtained = count_total_individuals_by_species(bird_records_df)
+    obtained = xxcount_total_individuals_by_species(bird_records_df)
 
     expected_actitis_number_19_11 = 6
     assert obtained.loc["Actitis macularius", "19/11/2023"] == expected_actitis_number_19_11
