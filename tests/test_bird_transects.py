@@ -1,11 +1,11 @@
 import pandas as pd
 from pytest import approx
 
-from transects import (
+from transects.bird_transects import (
     count_by_specie_and_method,
     count_total_individuals_by_species,
     filter_transects_of_interes,
-    get_mean_density_by_specie,
+    get_mean_density_by_species,
     get_density_by_specie_and_day,
     get_density_by_species_and_transects,
     get_mean_density_by_species_and_transects,
@@ -53,7 +53,7 @@ def test_get_density_by_specie():
 
 
 def tests_get_mean_density_by_specie():
-    obtained = get_mean_density_by_specie(bird_records_df, transect_df)
+    obtained = get_mean_density_by_species(bird_records_df, transect_df)
     assert (
         approx(obtained.loc["Setophaga pitiayumii insularis"].densidad, abs=1e-4)
         == 13.25 / total_area_2024
