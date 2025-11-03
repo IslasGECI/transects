@@ -32,7 +32,7 @@ def get_mean_density_by_species(bird_records_df, transect_df):
 
 
 def get_density_by_species_and_day(bird_records_df, transects_info_df):
-    counts = xxcount_total_individuals_by_species(bird_records_df).to_frame()
+    counts = count_total_individuals_by_species(bird_records_df).to_frame()
     total_area = get_total_area(transects_info_df)
     counts["densidad"] = counts.n_individuos / total_area
     return counts
@@ -92,11 +92,6 @@ def count_by_specie_and_method(records_df):
 
 
 def count_total_individuals_by_species(records_df):
-    filtered_records = filter_transects_of_interest(records_df)
-    return filtered_records.groupby(["Especie", "Fecha"])["n_individuos"].agg("sum")
-
-
-def xxcount_total_individuals_by_species(records_df):
     filtered_records = filter_transects_of_interest(records_df)
     filtered_records_reduced_by_species = add_species_level_column(filtered_records)
     return filtered_records_reduced_by_species.groupby(["species_level_name", "Fecha"])[
