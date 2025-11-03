@@ -1,4 +1,4 @@
-from transects import filter_resident_birds, filter_resident_records
+from transects import filter_resident_birds, filter_resident_records, filter_terrestrial_birds
 
 import pandas as pd
 
@@ -16,6 +16,12 @@ def test_filter_resident_birds():
     obtained = filter_resident_birds(observed_list_df)
     expected_residents = "Anas discors"
     assert obtained.values[0] == expected_residents
+
+
+def test_filter_terrerstrial_birds():
+    obtained = filter_terrestrial_birds(observed_list_df)
+    expected_terrestrial = "Columbina passerina"
+    assert obtained.values[0] == expected_terrestrial
 
 
 def test_filter_resident_records():
