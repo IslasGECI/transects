@@ -17,7 +17,7 @@ cli = typer.Typer()
 
 
 @cli.command()
-def write_selected_bird_records(
+def write_bird_records_by_group(
     observed_birds: Annotated[str, typer.Option()],
     bird_records: Annotated[str, typer.Option()],
     group: Annotated[str, typer.Option()],

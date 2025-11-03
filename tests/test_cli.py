@@ -90,19 +90,19 @@ def test_write_rodent_trapping_success():
 
 
 def test_write_selected_bird_records():
-    result = runner.invoke(cli, ["write-selected-bird-records", "--help"])
+    result = runner.invoke(cli, ["write-bird-records-by-group", "--help"])
     assert result.exit_code == 0
 
-    output_path = "tests/terrestrial_selected_bird_records.csv"
+    output_terrestrial_path = "tests/terrestrial_selected_bird_records.csv"
     observed_path = "tests/data/observed_bird_species.csv"
 
-    if os.path.exists(output_path):
-        os.remove(output_path)
+    if os.path.exists(output_terrestrial_path):
+        os.remove(output_terrestrial_path)
 
     result = runner.invoke(
         cli,
         [
-            "write-selected-bird-records",
+            "write-bird-records-by-group",
             "--observed-birds",
             observed_path,
             "--bird-records",
@@ -110,22 +110,22 @@ def test_write_selected_bird_records():
             "--group",
             "terrestrial",
             "--output-path",
-            output_path,
+            output_terrestrial_path,
         ],
     )
     assert result.exit_code == 0
-    assert os.path.exists(output_path)
+    assert os.path.exists(output_terrestrial_path)
 
-    output_path = "tests/resident_selected_bird_records.csv"
+    output_resident_path = "tests/resident_selected_bird_records.csv"
     observed_path = "tests/data/observed_bird_species.csv"
 
-    if os.path.exists(output_path):
-        os.remove(output_path)
+    if os.path.exists(output_resident_path):
+        os.remove(output_resident_path)
 
     result = runner.invoke(
         cli,
         [
-            "write-selected-bird-records",
+            "write-bird-records-by-group",
             "--observed-birds",
             observed_path,
             "--bird-records",
@@ -133,15 +133,18 @@ def test_write_selected_bird_records():
             "--group",
             "resident",
             "--output-path",
-            output_path,
+            output_resident_path,
         ],
     )
     assert result.exit_code == 0
-    assert os.path.exists(output_path)
+    assert os.path.exists(output_resident_path)
 
-    terrestrial_df = pd.read_csv("tests/terrestrial_selected_bird_records.csv")
-    resident_df = pd.read_csv("tests/resident_selected_bird_records.csv")
+    terrestrial_df = pd.read_csv(output_terrestrial_path)
+    resident_df = pd.read_csv(output_resident_path)
     assert len(terrestrial_df) != len(resident_df)
+
+    os.remove(output_resident_path)
+    os.remove(output_terrestrial_path)
 
 
 def test_write_resident_bird_records():
