@@ -9,6 +9,7 @@ from transects.bird_transects import (
     get_mean_density_by_species,
     get_density_by_species_and_day,
     get_density_by_species_and_transects,
+    xxget_density_by_species_and_transects,
     get_mean_density_by_species_and_transects,
     get_total_area,
     get_transect_area,
@@ -24,7 +25,7 @@ transect_df = pd.read_csv(transect_path)
 
 
 def test_get_density_by_species_and_transects():
-    obtained = get_density_by_species_and_transects(bird_records_df, transect_df)
+    obtained = xxget_density_by_species_and_transects(bird_records_df, transect_df)
     obtained_columns = obtained.columns.values
     expected_columns = ["n_individuos", "area", "density"]
     assert (obtained_columns == expected_columns).all()
