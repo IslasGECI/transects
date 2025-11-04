@@ -91,6 +91,14 @@ def count_by_specie_and_method(records_df):
     )
 
 
+def xxcount_by_specie_and_method(records_df):
+    filtered_records = filter_transects_of_interest(records_df)
+    filtered_records_reduced_by_species = add_species_level_column(filtered_records)
+    return filtered_records_reduced_by_species.groupby(
+        ["clave_muestreo", "Fecha", "species_level_name"]
+    )["n_individuos"].agg("sum")
+
+
 def count_total_individuals_by_species(records_df):
     filtered_records = filter_transects_of_interest(records_df)
     filtered_records_reduced_by_species = add_species_level_column(filtered_records)

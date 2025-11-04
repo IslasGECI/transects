@@ -3,6 +3,7 @@ from pytest import approx
 
 from transects.bird_transects import (
     count_by_specie_and_method,
+    xxcount_by_specie_and_method,
     count_total_individuals_by_species,
     filter_transects_of_interest,
     get_mean_density_by_species,
@@ -189,7 +190,7 @@ def tests_count_by_specie_and_method():
         "n_individuos": [1, 2, 10],
     }
     records_df_from_dict = pd.DataFrame(records_dict)
-    obtained = count_by_specie_and_method(records_df_from_dict)
+    obtained = xxcount_by_specie_and_method(records_df_from_dict)
     expected_rows = 2
     assert len(obtained) == expected_rows
     expected_MMAA_species = 2
