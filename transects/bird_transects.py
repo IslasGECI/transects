@@ -15,7 +15,7 @@ def get_mean_density_by_species_and_transects(bird_records_df, transect_df):
 
 
 def get_density_by_species_and_transects(bird_records_df, transect_df):
-    bird_counts_by_transect_and_species = xxcount_by_specie_and_method(bird_records_df).to_frame()
+    bird_counts_by_transect_and_species = count_by_specie_and_method(bird_records_df).to_frame()
     transect_areas = get_transect_area(transect_df)
     joined = join_bird_counts_and_transect_areas(
         bird_counts_by_transect_and_species, transect_areas
@@ -85,13 +85,6 @@ def get_transect_length(transects_info, transect_mask):
 
 
 def count_by_specie_and_method(records_df):
-    filtered_records = filter_transects_of_interest(records_df)
-    return filtered_records.groupby(["clave_muestreo", "Fecha", "Especie"])["n_individuos"].agg(
-        "sum"
-    )
-
-
-def xxcount_by_specie_and_method(records_df):
     filtered_records = filter_transects_of_interest(records_df)
     filtered_records_reduced_by_species = add_species_level_column(filtered_records)
     return filtered_records_reduced_by_species.groupby(
