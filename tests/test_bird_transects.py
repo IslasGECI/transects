@@ -210,7 +210,7 @@ def tests_count_by_specie_and_method():
         "n_individuos": [1, 2, 8, 4, 5],
     }
     records_df_from_dict = pd.DataFrame(records_dict)
-    obtained = count_by_specie_and_method(records_df_from_dict)
+    obtained = xxcount_by_specie_and_method(records_df_from_dict)
     expected_MMAA_species = 8
     assert obtained.loc["MMAA", "20/10/2023", "species 2"] == expected_MMAA_species
 
