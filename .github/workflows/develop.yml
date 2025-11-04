@@ -1,8 +1,5 @@
 name: Push latest
-on:
-  push:
-    branches:
-      - develop
+on: push
 jobs:
   actions:
     runs-on: ubuntu-latest
