@@ -60,6 +60,8 @@ def tests_get_mean_density_by_specie():
     obtained_columns = obtained.columns.values
     expected_columns = ["n_individuos", "densidad"]
     assert (obtained_columns == expected_columns).all()
+    is_next_value_higher = obtained["n_individuos"].diff() > 0
+    assert not any(is_next_value_higher)
 
 
 def test_get_transect_area():
