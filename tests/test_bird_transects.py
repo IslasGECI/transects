@@ -39,6 +39,10 @@ def test_get_mean_density_by_species_and_transects():
     is_next_value_higher = obtained.loc[transect_name, :]["n_individuos"].diff() > 0
     assert not any(is_next_value_higher)
 
+    obtained_transects_list = obtained.index.get_level_values(0).unique()
+    expected_transect_list = ["MMAC", "MMAB", "MMAA", "MMAD", "MMAG", "MMAH", "MMAE"]
+    assert obtained_transects_list == expected_transect_list
+
 
 total_area_2024 = 399.66743
 
