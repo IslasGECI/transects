@@ -34,7 +34,10 @@ def test_get_density_by_species_and_transects():
 
 def test_get_mean_density_by_species_and_transects():
     obtained = get_mean_density_by_species_and_transects(bird_records_df, transect_df)
-    assert obtained.loc["MMAA", "Trogon elegans"].density == approx(2 / 8.82, abs=1e-6)
+    transect_name = "MMAA"
+    assert obtained.loc[transect_name, "Trogon elegans"].density == approx(2 / 8.82, abs=1e-6)
+    is_next_value_higher = obtained.loc[transect_name, :]["n_individuos"].diff() > 0
+    assert not any(is_next_value_higher)
 
 
 total_area_2024 = 399.66743
