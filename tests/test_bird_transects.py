@@ -214,7 +214,7 @@ def tests_count_by_specie_and_method():
     expected_MMAA_species = 8
     assert obtained.loc["MMAA", "20/10/2023", "species 2"] == expected_MMAA_species
 
-    obtained = count_by_specie_and_method(bird_records_df)
+    obtained = xxcount_by_specie_and_method(bird_records_df)
     expected_actitis_number = 4
     assert obtained.loc[("MMAA", "18/11/2023", "Actitis macularius")] == expected_actitis_number
 
