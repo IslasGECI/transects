@@ -35,7 +35,7 @@ def test_write_bird_transect_densities():
     )
     assert result.exit_code == 0
     assert_exist(output_path)
-    # os.remove(output_path)
+    os.remove(output_path)
 
 
 def test_write_bird_densities():
@@ -60,7 +60,7 @@ def test_write_bird_densities():
     )
     assert result.exit_code == 0
     assert_exist(output_path)
-    # os.remove(output_path)
+    os.remove(output_path)
 
 
 def test_write_rodent_trapping_success():
@@ -84,7 +84,7 @@ def test_write_rodent_trapping_success():
     )
     assert result.exit_code == 0
     assert_exist(output_path)
-    # os.remove(output_path)
+    os.remove(output_path)
 
 
 def test_write_selected_bird_records():
