@@ -69,7 +69,7 @@ linter:
 mutants: setup
 	mutmut run --paths-to-mutate ${module}
 
-setup: clean install
+setup: clean install_dev
 
 tests:
 	pytest --verbose
