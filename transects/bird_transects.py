@@ -18,13 +18,20 @@ def get_mean_density_by_species_and_transects(bird_records_df, transect_df):
             ["clave_muestreo", "n_individuos"], ascending=False
         )
     )
+    sorted_transects_by_totals = _sort_transects_by_total_individuals(
+        mean_densities_by_species_and_transect_sorted_by_species
+    )
+    return mean_densities_by_species_and_transect_sorted_by_species.loc[sorted_transects_by_totals]
+
+
+def _sort_transects_by_total_individuals(mean_densities_by_species_and_transect_sorted_by_species):
     total_individuals_by_transect = (
         mean_densities_by_species_and_transect_sorted_by_species.groupby(level="clave_muestreo")[
             "n_individuos"
         ].sum()
     )
     sorted_transects_by_totals = total_individuals_by_transect.sort_values(ascending=False).index
-    return mean_densities_by_species_and_transect_sorted_by_species.loc[sorted_transects_by_totals]
+    return sorted_transects_by_totals
 
 
 def get_density_by_species_and_transects(bird_records_df, transect_df):
