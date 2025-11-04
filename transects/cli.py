@@ -2,6 +2,7 @@ from transects.rodent_transects import calculate_trapping_success
 from transects.bird_transects import (
     get_mean_density_by_species,
     get_mean_density_by_species_and_transects,
+    xxget_mean_density_by_species_and_transects,
 )
 from transects.filter_resident_birds import (
     filter_resident_birds,
@@ -50,7 +51,7 @@ def write_bird_transect_densities(
 ):
     bird_records_df = pd.read_csv(bird_records)
     transects_df = pd.read_csv(bird_transects)
-    get_mean_density_by_species_and_transects(bird_records_df, transects_df).to_csv(output_path)
+    xxget_mean_density_by_species_and_transects(bird_records_df, transects_df).to_csv(output_path)
 
 
 @cli.command()
