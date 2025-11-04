@@ -6,7 +6,7 @@ from transects.reduce_to_species_level import add_species_level_column
 
 
 def get_mean_density_by_species_and_transects(bird_records_df, transect_df):
-    density_by_day_species_and_transects = xxget_density_by_species_and_transects(
+    density_by_day_species_and_transects = get_density_by_species_and_transects(
         bird_records_df, transect_df
     )
     return density_by_day_species_and_transects.groupby(
@@ -15,16 +15,6 @@ def get_mean_density_by_species_and_transects(bird_records_df, transect_df):
 
 
 def get_density_by_species_and_transects(bird_records_df, transect_df):
-    bird_counts_by_transect_and_species = count_by_specie_and_method(bird_records_df).to_frame()
-    transect_areas = get_transect_area(transect_df)
-    joined = join_bird_counts_and_transect_areas(
-        bird_counts_by_transect_and_species, transect_areas
-    )
-    joined["density"] = joined["n_individuos"] / joined["area"]
-    return joined
-
-
-def xxget_density_by_species_and_transects(bird_records_df, transect_df):
     bird_counts_by_transect_and_species = xxcount_by_specie_and_method(bird_records_df).to_frame()
     transect_areas = get_transect_area(transect_df)
     joined = join_bird_counts_and_transect_areas(
