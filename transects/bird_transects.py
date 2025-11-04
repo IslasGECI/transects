@@ -9,9 +9,13 @@ def get_mean_density_by_species_and_transects(bird_records_df, transect_df):
     density_by_day_species_and_transects = get_density_by_species_and_transects(
         bird_records_df, transect_df
     )
-    return density_by_day_species_and_transects.groupby(
+    mean_densities_by_species_and_transect = density_by_day_species_and_transects.groupby(
         ["clave_muestreo", "species_level_name"]
     ).agg({"n_individuos": "sum", "area": "mean", "density": "mean"})
+
+    return mean_densities_by_species_and_transect.sort_values(
+        ["clave_muestreo", "n_individuos"], ascending=False
+    )
 
 
 def get_density_by_species_and_transects(bird_records_df, transect_df):
