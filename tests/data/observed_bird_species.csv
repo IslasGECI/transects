@@ -1,52 +1,52 @@
-Especie,residentes
-Actitis macularius,FALSE
-Amazilia rutila graysoni,TRUE
-Amazona oratrix tresmariae,TRUE
-Anas discors,FALSE
-Ardea herodias,FALSE
-Arenaria interpres,FALSE
-Calidris alba,FALSE
-Calidris minutilla,FALSE
-Caracara plancus cheriway,TRUE
-Cardinalis cardinalis mariae,TRUE
-Charadrius semipalmatus,FALSE
-Charadrius vociferus,FALSE
-Columbina passerina,TRUE
-Crotophaga sulcirostris,TRUE
-Cynanthus latirostris lawrencei,TRUE
-Dryobates scalaris,TRUE
-Empidonax difficilis,FALSE
-Falco sparverius,FALSE
-Fregata magnificens,FALSE
-Haematopus americanus,FALSE
-Himantopus mexicanus,TRUE
-Hirunda rustica,TRUE
-Icterus pustulatus graysoni,TRUE
-Larus occidentalis,FALSE
-Leptotila verreauxi capitalis,TRUE
-Melanotis caerulescens longirostris,TRUE
-Mimus polyglotus,TRUE
-Mniotilta varia,FALSE
-Mosquero,FALSE
-Myiarchus tuberculifer,TRUE
-Numenius phaeopus,FALSE
-Nyctanassa violacea,FALSE
-Pandion haliaetus,FALSE
-Patagioenas flavirostris,TRUE
-Pelecanus occidentalis,FALSE
-Phalacrocorax auritus,FALSE
-Pheugopedius felix lawrencei,TRUE
-Piranga bidentata,TRUE
-Piranga ludoviciana,FALSE
-Plegadis chihi,TRUE
-Pluvialis dominica,FALSE
-Setophaga pitiayumii insularis,TRUE
-Spizella passerina,FALSE
-Sula nebouxii,FALSE
-Thalasseus elegans,FALSE
-Tringa semipalmata,FALSE
-Trogon elegans,TRUE
-Turdus rufopalliatus graysoni,TRUE
-Tyrannus melancholicus,TRUE
-Zenaida asiatica,TRUE
-Zenaida macroura,TRUE
+Especie,residentes,Grupo
+Actitis macularius,FALSE,Playera
+Amazilia rutila graysoni,TRUE,Terrestre
+Amazona oratrix tresmariae,TRUE,Terrestre
+Anas discors,FALSE,Acuatica
+Ardea herodias,FALSE,Acuatica
+Arenaria interpres,FALSE,Playera
+Calidris alba,FALSE,Playera
+Calidris minutilla,FALSE,Playera
+Caracara plancus cheriway,TRUE,Terrestre
+Cardinalis cardinalis mariae,TRUE,Terrestre
+Charadrius semipalmatus,FALSE,Playera
+Charadrius vociferus,FALSE,Playera
+Columbina passerina,TRUE,Terrestre
+Crotophaga sulcirostris,TRUE,Terrestre
+Cynanthus latirostris lawrencei,TRUE,Terrestre
+Dryobates scalaris,TRUE,Terrestre
+Empidonax difficilis,FALSE,Terrestre
+Falco sparverius,FALSE,Terrestre
+Fregata magnificens,FALSE,Marina
+Haematopus americanus,FALSE,Playera
+Himantopus mexicanus,TRUE,Terrestre
+Hirunda rustica,TRUE,Terrestre
+Icterus pustulatus graysoni,TRUE,Terrestre
+Larus occidentalis,FALSE,Marina
+Leptotila verreauxi capitalis,TRUE,Terrestre
+Melanotis caerulescens longirostris,TRUE,Terrestre
+Mimus polyglotus,TRUE,Terrestre
+Mniotilta varia,FALSE,Terrestre
+Mosquero,FALSE,NA
+Myiarchus tuberculifer,TRUE,Terrestre
+Numenius phaeopus,FALSE,Playera
+Nyctanassa violacea,FALSE,Terrestre
+Pandion haliaetus,FALSE,Marina
+Patagioenas flavirostris,TRUE,Terrestre
+Pelecanus occidentalis,FALSE,Marina
+Phalacrocorax auritus,FALSE,NA
+Pheugopedius felix lawrencei,TRUE,Terrestre
+Piranga bidentata,TRUE,Terrestre
+Piranga ludoviciana,FALSE,Terrestre
+Plegadis chihi,TRUE,Acuatica
+Pluvialis dominica,FALSE,Playera
+Setophaga pitiayumii insularis,TRUE,Terrestre
+Spizella passerina,FALSE,Terrestre
+Sula nebouxii,FALSE,Marina
+Thalasseus elegans,FALSE,Marina
+Tringa semipalmata,FALSE,Playera
+Trogon elegans,TRUE,Terrestre
+Turdus rufopalliatus graysoni,TRUE,Terrestre
+Tyrannus melancholicus,TRUE,Terrestre
+Zenaida asiatica,TRUE,Terrestre
+Zenaida macroura,TRUE,Terrestre
