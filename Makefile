@@ -59,6 +59,9 @@ init_github:
 install:
 	pip install --editable .
 
+install_dev:
+	pip install --editable .[dev]
+
 linter:
 	$(call lint, ${module})
 	$(call lint, tests)
@@ -66,7 +69,7 @@ linter:
 mutants: setup
 	mutmut run --paths-to-mutate ${module}
 
-setup: clean install
+setup: clean install_dev
 
 tests:
 	pytest --verbose

@@ -15,6 +15,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.4.0] - 2025-11-04
+
+### Added
+- CLI command `write-bird-records-by-group` to filter bird records by the `group` parameter.
+
+### Fixed
+- CLI commands `write-bird-densities` and `write-bird-transect-densities` can now handle subspecies names and correctly return names at the species level.
+
+### Changed
+- CLI commands `write-bird-densities` and `write-bird-transect-densities` now output the column `species_level_name` instead of `Especie`.
+
+
 ## [0.3.0] - 2024-01-30
 
 ### Added

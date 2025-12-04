@@ -2,13 +2,32 @@ import numpy as np
 import pandas as pd
 
 
+from transects.reduce_to_species_level import add_species_level_column
+
+
 def get_mean_density_by_species_and_transects(bird_records_df, transect_df):
     density_by_day_species_and_transects = get_density_by_species_and_transects(
         bird_records_df, transect_df
     )
-    return density_by_day_species_and_transects.groupby(["clave_muestreo", "Especie"]).agg(
-        {"n_individuos": "sum", "area": "mean", "density": "mean"}
+    mean_densities_by_species_and_transect = density_by_day_species_and_transects.groupby(
+        ["clave_muestreo", "species_level_name"]
+    ).agg({"n_individuos": "sum", "area": "mean", "density": "mean"})
+
+    mean_densities_by_species_and_transect_sorted_by_species = (
+        mean_densities_by_species_and_transect.sort_values(
+            ["clave_muestreo", "n_individuos"], ascending=False
+        )
     )
+    sorted_transects_by_totals = _sort_transects_by_total_individuals(
+        mean_densities_by_species_and_transect_sorted_by_species
+    )
+    return mean_densities_by_species_and_transect_sorted_by_species.loc[sorted_transects_by_totals]
+
+
+def _sort_transects_by_total_individuals(dataframe):
+    total_individuals_by_transect = dataframe.groupby(level="clave_muestreo")["n_individuos"].sum()
+    sorted_transects_by_totals = total_individuals_by_transect.sort_values(ascending=False).index
+    return sorted_transects_by_totals
 
 
 def get_density_by_species_and_transects(bird_records_df, transect_df):
@@ -21,12 +40,16 @@ def get_density_by_species_and_transects(bird_records_df, transect_df):
     return joined
 
 
-def get_mean_density_by_specie(bird_records_df, transect_df):
-    density_by_day = get_density_by_specie_and_day(bird_records_df, transect_df)
-    return density_by_day.groupby(level="Especie").agg({"n_individuos": "sum", "densidad": "mean"})
+def get_mean_density_by_species(bird_records_df, transect_df):
+    density_by_day = get_density_by_species_and_day(bird_records_df, transect_df)
+    mean_densities_by_species = density_by_day.groupby(level="species_level_name").agg(
+        {"n_individuos": "sum", "densidad": "mean"}
+    )
+
+    return mean_densities_by_species.sort_values(["n_individuos"], ascending=False)
 
 
-def get_density_by_specie_and_day(bird_records_df, transects_info_df):
+def get_density_by_species_and_day(bird_records_df, transects_info_df):
     counts = count_total_individuals_by_species(bird_records_df).to_frame()
     total_area = get_total_area(transects_info_df)
     counts["densidad"] = counts.n_individuos / total_area
@@ -80,18 +103,22 @@ def get_transect_length(transects_info, transect_mask):
 
 
 def count_by_specie_and_method(records_df):
-    filtered_records = filter_transects_of_interes(records_df)
-    return filtered_records.groupby(["clave_muestreo", "Fecha", "Especie"])["n_individuos"].agg(
-        "sum"
-    )
+    filtered_records = filter_transects_of_interest(records_df)
+    filtered_records_reduced_by_species = add_species_level_column(filtered_records)
+    return filtered_records_reduced_by_species.groupby(
+        ["clave_muestreo", "Fecha", "species_level_name"]
+    )["n_individuos"].agg("sum")
 
 
 def count_total_individuals_by_species(records_df):
-    filtered_records = filter_transects_of_interes(records_df)
-    return filtered_records.groupby(["Especie", "Fecha"])["n_individuos"].agg("sum")
+    filtered_records = filter_transects_of_interest(records_df)
+    filtered_records_reduced_by_species = add_species_level_column(filtered_records)
+    return filtered_records_reduced_by_species.groupby(["species_level_name", "Fecha"])[
+        "n_individuos"
+    ].agg("sum")
 
 
-def filter_transects_of_interes(records_df):
+def filter_transects_of_interest(records_df):
     claves = [
         "MMAA",
         "MMAB",

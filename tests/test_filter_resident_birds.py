@@ -1,18 +1,31 @@
-from transects import filter_resident_birds, filter_resident_records
+from transects.filter_resident_birds import (
+    filter_resident_birds,
+    filter_species_from_series,
+    filter_terrestrial_birds,
+)
 
 import pandas as pd
 
 
+observed_list_df = pd.DataFrame(
+    {
+        "Especie": ["Calidris alba", "Anas discors", "Columbina passerina"],
+        "residentes": [False, True, False],
+        "Grupo": ["Playera", "Acuatica", "Terrestre"],
+    }
+)
+
+
 def test_filter_resident_birds():
-    observed_list_df = pd.DataFrame(
-        {
-            "Especie": ["Calidris alba", "Anas discors", "Columbina passerina"],
-            "residentes": [False, True, False],
-        }
-    )
     obtained = filter_resident_birds(observed_list_df)
     expected_residents = "Anas discors"
     assert obtained.values[0] == expected_residents
+
+
+def test_filter_terrerstrial_birds():
+    obtained = filter_terrestrial_birds(observed_list_df)
+    expected_terrestrial = "Columbina passerina"
+    assert obtained.values[0] == expected_terrestrial
 
 
 def test_filter_resident_records():
@@ -29,10 +42,10 @@ def test_filter_resident_records():
         }
     )
     resident_birds_df = pd.Series(["Columbina passerina"])
-    obtained = filter_resident_records(resident_birds_df, records_list_df)
+    obtained = filter_species_from_series(resident_birds_df, records_list_df)
     expected_rows = 1
     assert len(obtained) == expected_rows
     resident_birds_df = pd.Series(["Anas discors"])
-    obtained = filter_resident_records(resident_birds_df, records_list_df)
+    obtained = filter_species_from_series(resident_birds_df, records_list_df)
     expected_rows = 2
     assert len(obtained) == expected_rows
